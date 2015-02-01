@@ -12,7 +12,7 @@ import Window
 
 
 port title : String
-port title = "Examples"
+port title = "例子"
 
 
 main : Signal.Signal Element

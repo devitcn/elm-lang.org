@@ -10,15 +10,15 @@ import Website.ColorScheme as C
 import Window
 
 port title : String
-port title = "Elm - functional web programming"
+port title = "Elm 编程语言 - functional web programming"
 
 main = skeleton "" content <~ Window.dimensions
 
 tagLine =
     Text.leftAligned <|
-        Text.fromString "A " ++
-        Text.link "/learn/What-is-FRP.elm" (Text.fromString "functional reactive") ++
-        Text.fromString " language for interactive applications"
+        Text.fromString "一种用于编写交互式应用程序的，" ++
+        Text.link "/learn/What-is-FRP.elm" (Text.fromString "函数式、反应式") ++
+        Text.fromString "编程语言。"
 
 content outer =
     let inner = 600
@@ -42,7 +42,7 @@ content outer =
     , spacer outer 60
     , centerText exampleText
     , container outer 500 middle <| exampleBlock 860
-    , center (button outer 260 "/Examples.elm" "More Examples")
+    , center (button outer 260 "/Examples.elm" "更多的例子")
     , spacer outer 60
     , width outer debuggerTitle
     , centerText debuggerText
@@ -63,26 +63,23 @@ threeKeywords =
     ]
 
 functional = Markdown.toElement """
-<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">Functional</div>
+<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">函数式</div>
 
-Features like immutability and type inference help you write code that is short,
-fast, and maintainable. Elm makes them [easy to learn](/Learn.elm) too.
+具备不变性和类型推断的特点，可以让你更快的写出短小精悍而又易维护的代码。而且，Elm 还[容易学习](/Learn.elm)。
 
 """
 
 reactive = Markdown.toElement """
-<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">Reactive</div>
+<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">反应式</div>
 
-Elm is based on the idea of [Functional Reactive
-Programming](/learn/What-is-FRP.elm). Create highly interactive applications
-without messy callbacks or a tangle of shared state.
+Elm 基于[函数式、反应式编程思想](/learn/What-is-FRP.elm)。可以很容易的创建出方便交互的应用，而且没有凌乱的回调函数和纠结的状态机制。
 """
 
 compatible = Markdown.toElement """
-<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">Compatible</div>
+<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 2em;">兼容性</div>
 
-Elm compiles to HTML, CSS, and JavaScript. It is easy to [use HTML][html] and
-[interop with JS][ports], so it is simple to write part of your application in Elm.
+Elm 会编译成HTML、CSS、JavaScript。在Elm中也能嵌入 [HTML][html] 和
+[JS][ports]，所以将部分功能用Elm来编写是比较容易的。
 
 [html]: /blog/Blazing-Fast-Html.elm
 [ports]: /learn/Ports.elm
@@ -91,14 +88,11 @@ Elm compiles to HTML, CSS, and JavaScript. It is easy to [use HTML][html] and
 
 exampleText = Markdown.toElement """
 
-<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 3em;">Examples</div>
+<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 3em;">例子</div>
 
-Elm is great for [2D](/blog/Pong.elm) and
-[3D](https://github.com/johnpmayer/elm-webgl) games,
-[diagrams](https://github.com/seliopou/elm-d3), widgets, and
-[websites](/blog/Blazing-Fast-Html.elm). In addition to the larger
-examples showcased here, there are tons of [educational examples](/Examples.elm)
-to help you learn Elm by reading and modifying simple programs.
+Elm 非常适合用来编写[2D](/blog/Pong.elm)和[3D](https://github.com/johnpmayer/elm-webgl)游戏、
+[图表](https://github.com/seliopou/elm-d3)、小部件、和[网站](/blog/Blazing-Fast-Html.elm)。
+除下面列出的这些精彩例子外，还有很多的简单易懂、可直接修改的[教程示例](/Examples.elm)来帮助你学习 Elm 编程语言。
 
 """
 
@@ -118,16 +112,15 @@ exampleBlock w =
 
 debuggerTitle = Markdown.toElement """
 
-<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 3em;">Time Traveling Debugger</div>
+<div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center; font-size: 3em;">时间线调试器</div>
 
 """
 
 debuggerText = Markdown.toElement """
 
-Elm's [Time Traveling Debugger][debug] makes debugging and exploration easy.
-It also allows [hot-swapping](/blog/Interactive-Programming.elm), so you
-can modify running programs. [Elm Reactor][reactor] bundles up all these
-features for use with your favorite code editor.
+Elm 提供开发工具：[Elm Reactor][reactor]，其中的[时间线调试器][debug]使得调试和侦测变得容易。
+而且还支持[热部署](/blog/Interactive-Programming.elm)，可以直接修改运行中的代码。
+还能够和你喜欢的代码编辑器一起工作。
 
 [debug]: http://debug.elm-lang.org
 [reactor]: /blog/Introducing-Elm-Reactor.elm

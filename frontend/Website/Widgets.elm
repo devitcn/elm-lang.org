@@ -37,8 +37,8 @@ bigLogo =
 
 installButtons w =
     flow right
-    [ button (w // 2) 180 "/try" "Try"
-    , button (w // 2) 180 "/Install.elm" "Install"
+    [ button (w // 2) 180 "/try" "体验"
+    , button (w // 2) 180 "/Install.elm" "下载"
     ]
 
 

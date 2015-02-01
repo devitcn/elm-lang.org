@@ -29,8 +29,9 @@ footerWords =
           Text.fromString words1 ++ Text.link href (Text.fromString words2) ++ Text.fromString words3
   in
      Text.color (Color.rgb 145 145 145) <|
-       wordLink "written in Elm and " "https://github.com/elm-lang/elm-lang.org" "open source" "" ++
-       wordLink " / " "https://github.com/evancz" "Evan Czaplicki" " &copy;2011-14"
+       wordLink "使用 Elm 编写生成，并且" "https://github.com/elm-lang/elm-lang.org" "开源" "。" ++
+       wordLink "简体中文由 Alex Lei 翻译，" "https://github.com/elm-lang/elm-lang.org" "并且在此" "。" ++
+       wordLink "版权所有 " "https://github.com/evancz" "Evan Czaplicki" " &copy;2011-14"
 
 heading localName outer =
   let inner = min 800 outer
@@ -63,7 +64,7 @@ logo =
                   |> Text.color clr
                   |> Text.leftAligned
           in
-            color C.lightGrey <| 
+            color C.lightGrey <|
             flow right
               [ logoImage 30 30
               , spacer 4 30
@@ -83,12 +84,12 @@ tabs localName =
 
 
 paths =
-  [ ("Learn"    , "/Learn.elm")
-  , ("Examples" , "/Examples.elm")
-  , ("Packages" , "http://package.elm-lang.org/")
-  , ("Community", "/Community.elm")
-  , ("Blog"     , "/Blog.elm")
-  , ("Install"  , "/Install.elm")
+  [ ("开始学习"    , "/Learn.elm")
+  , ("代码样例" , "/Examples.elm")
+  , ("Library" , "http://package.elm-lang.org/")
+  , ("社区和支持", "/Community.elm")
+  , ("博客"     , "/Blog.elm")
+  , ("下载安装"  , "/Install.elm")
   ]
 
 clicks : Signal.Channel String
