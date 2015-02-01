@@ -4,3 +4,4 @@ dist
 resources/docs.json
 log
 cabal.sandbox.config
+.project
