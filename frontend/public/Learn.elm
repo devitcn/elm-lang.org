@@ -4,7 +4,7 @@ import Signal (Signal, (<~))
 import Website.Skeleton (skeleton)
 import Window
 
-main = skeleton "Learn" content <~ Window.dimensions
+main = skeleton "开始学习" content <~ Window.dimensions
 
 content outer =
   let w = 600
@@ -69,7 +69,7 @@ documentation.
 
 ### Publications
 
-* [Concurrent FRP for GUIs][thesis] &mdash; very accessible history of FRP and overview of Elm 
+* [Concurrent FRP for GUIs][thesis] &mdash; very accessible history of FRP and overview of Elm
 * [Asynchronous FRP for GUIs][pldi] &mdash; formal semantics of Elm from PLDI 2013
 
  [thesis]: /papers/concurrent-frp.pdf "thesis"

@@ -3,17 +3,17 @@ import Website.Message (report)
 
 main = report <| Markdown.toElement """
 
-# Online Editor
+# 在线体验
 
-Write and compile code online!
+在线编写然后编译执行！
 
   * <a href="/edit/examples/Elements/HelloWorld.elm" target="_top">Hello World!</a>
   * <a href="/edit/examples/Reactive/Position.elm" target="_top">Mouse</a>
   * <a href="/edit/examples/Intermediate/Clock.elm" target="_top">Clock</a>
 
-For more guidance check out:
+要获得更多指导请点击：
 
-  * <a href="/Examples.elm" target="_top">More examples</a>
-  * <a href="/Learn.elm" target="_top">Learning resources</a>
+  * <a href="/Examples.elm" target="_top">代码样例</a>
+  * <a href="/Learn.elm" target="_top">开始学习</a>
 
 """
