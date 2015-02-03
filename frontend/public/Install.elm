@@ -10,9 +10,9 @@ import Text
 import Window
 
 port title : String
-port title = "Install"
+port title = "下载安装"
 
-main = skeleton "Install" content <~ Window.dimensions
+main = skeleton "下载安装" content <~ Window.dimensions
 
 content outer =
     let center elem =
@@ -31,50 +31,43 @@ content outer =
 
 header = Markdown.toElement """
 
-# Install
+# 安装
 
-There are handy installers for Windows and Mac, but you will need to [build
-from source](#build-from-source) on other platforms.
+已经为Mac和Windows用户准备好了安装程序方便安装。其他平台的话需要[从源代码编译](#build-from-source)。
 
 """
 
 
 rest = Markdown.toElement """
 
-To upgrade to a newer version of Elm, run the installer again. They safely
-overwrite old executables so your machine is in a consistent state.
+如需从旧版本升级，只需下载新的安装包重新安装即可，安装程序会覆盖旧的运行环境。
 
-To uninstall on Mac, run [this script][uninstall].
+如需卸载，Windows用户可在控制面板，添加删除软件中卸载，Mac用户需要下载执行[这个卸载脚本][uninstall].
 
 [uninstall]: https://github.com/elm-lang/elm-platform/blob/master/installers/mac/helper-scripts/uninstall.sh
 
 <br>
 
-## Syntax Highlighting
+## 语法高亮支持
 
-There are quite a few editors that support Elm syntax. Some even integrate with
-the REPL. Here are some links to show how to get Elm set up with a couple
-different editors:
+有几个编辑器已经支持Elm语法高亮，有的还集成了交互式开发功能（REPL），这里列出几个参考链接：
 
   * [Sublime Text](https://github.com/deadfoxygrandpa/Elm.tmLanguage)
   * [Atom](https://atom.io/packages/language-elm)
   * [Emacs](https://github.com/jcollard/elm-mode)
   * [Vim](https://github.com/lambdatoast/elm.vim)
 
-This plus [Elm Reactor](/blog/Introducing-Elm-Reactor.elm) and you can get a
-pretty solid workflow going!
+再配合上[Elm Reactor](/blog/Introducing-Elm-Reactor.elm)就有了一个完整的开发环境了。
 
 <br>
 
 <span id="build-from-source"></span>
-## Build from Source
+## 从源代码编译
 
-The following instructions should work on any platform, from Windows to Ubuntu.
-It requires getting the Haskell compiler, but you can uninstall that after you
-have the executables you need.
+这份指导应该能在大多数平台（Windows、Linux）上安装上ELm环境，安装之前需要用一下Haskell compiler（用完就可以删除了）。
 
-**If you have never used Haskell**, first download the [Haskell Platform][hp].
-Then run the following commands:
+**如果以前没用 Haskell**，先要[从这下载安装Haskell Platform][hp]。
+然后执行这些命令：
 
 ```bash
 cabal update
@@ -83,69 +76,70 @@ cabal install -j elm-compiler-0.14.1 elm-package-0.4 elm-make-0.1.1
 cabal install -j elm-repl-0.4 elm-reactor-0.3
 ```
 
-This will take some time, but when it is done, all of these executables should
-be on your PATH. If not, then they should be in `~/.cabal/bin` which you can
-[add to your PATH][add-path].
+需要花点时间来编译程序，完成后就添加到了PATH变量中了。要是没有的话可能会在这个地方：`~/.cabal/bin`，[然后手工填加一下到PATH][add-path].
 
 [hp]: http://hackage.haskell.org/platform/
 [add-path]: http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
 
-**If you use Haskell for other stuff**, it would be best to use cabal
-sandboxes for the install process. These were released with cabal 0.18 and will
-let you use [this install script][script].
+**如果你还用Haskell开发其他程序**，那最好还是用cabal沙箱来安装Elm环境，[参看这个脚本][script]，cabal 0.18以上支持。
+
+附注：如果想在虚拟机环境中快速体验的话也可以用这个：
+```bash
+#Tested on ubuntu12.04
+#download Haskell platform
+cd /
+sudo wget https://www.haskell.org/platform/download/2014.2.0.0/haskell-platform-2014.2.0.0-unknown-linux-x86_64.tar.gz
+sudo tar xvf ...downloaded-tarfile...
+sudo /usr/local/haskell/ghc-7.8.3-x86-64/bin/activate-hs
+
+#download elm and install global
+cabal update
+cabal install -j --global elm-compiler-0.14.1 elm-package-0.4 elm-make-0.1.1
+cabal install -j --global elm-repl-0.4 elm-reactor-0.3
+
+```
 
 [script]: https://github.com/elm-lang/elm-platform/blob/master/installers/BuildFromSource.hs#L1-L31
 
 <br>
 
-## My First Project
+## 创建第一个项目
 
-The easiest way to get started with Elm is with the [elm-examples][] project.
-It has a couple small Elm programs that are great to learn from and fun to
-play with in [Elm Reactor][reactor].
+最简单的方法是下载运行这个[Elm示例项目][] 。
+里面有几个简单的ELm程序可以运行。[使用Elm Reactor来运行][reactor].
 
 [elm-examples]: https://github.com/evancz/elm-examples
 [reactor]: https://github.com/elm-lang/elm-reactor
 
 <br>
 
-## Additional Tools
+## 附加工具
 
-The Elm Platform comes with quite a few helpful tools in addition to
-`elm-reactor`. This section will give a brief overview of them:
+Elm Platform 中包含了几个非常有用的工具，`elm-reactor`是其中之一，下面介绍一下其他三个的功能：
 
   * [`elm-make`](https://github.com/elm-lang/elm-make) &mdash;
-    this command line tool actually compiles Elm programs to HTML
-    and JavaScript. It is the most general way to compile Elm code, so if your
-    project becomes too advanced for `elm-reactor` you may want to start using
-    the compiler directly.
+    用来将Elm程序编译成HTML和JavaScript。最原始的编译程序，如果你的项目比较复杂而超过`elm-reactor` 处理能力，你可以需要直接使用编译器来编译。
 
   * [`elm-repl`](https://github.com/elm-lang/elm-repl) &mdash;
-    REPL stands for [read-eval-print-loop][repl] which lets you play with small
-    Elm expressions. The REPL can import code from your projects, so if you want
-    to play around with a function burried deep inside a module, you can load it
-    into the REPL and test it out. `elm-repl` eventually needs to evaluate
-    JavaScript code, so for now you need to install [node.js](http://nodejs.org/)
-    to use it.
+    REPL是一个交互式的执行环境（[read-eval-print-loop][repl]），能够让你执行一些小的Elm表达式。
+    也能够从项目目录导入代码，所以能够方便的测试一个模块的内部功能。
+    `elm-repl`最终需要执行JavaScript代码，所以需要安装[node.js](http://nodejs.org/)
+    才能工作。
 
   * [`elm-package`](https://github.com/elm-lang/elm-package) &mdash;
-    this tool lets you grab packages from the [Elm Package
-    Catalog](http://package.elm-lang.org/). This is a central home for community
-    libraries that solve common problems.
+    用来从[Elm Package
+    Catalog](http://package.elm-lang.org/)下载依赖包。一个由社区共同维护的Elm代码库。
 
-With each of these tools you can use the `--help` flag to get more information.
-Each tool also has a README on [GitHub](http://github.com/elm-lang) that has
-some helpful information.
+所有工具都支持“`--help`”参数来查询详细信息。在[GitHub](http://github.com/elm-lang)还有README文档可以参阅。
 
   [repl]: http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
 
 <br>
 
-## Help
+## 求助
 
-If you are stuck, check to see if anyone has had [a similar issue][elm-platform].
-If not, open a new issue or email [the list][group] or ask a question in the
-[#elm IRC channel][irc].
+如果遇到问题，可以先看看是否有人[遇到了同样的问题][elm-platform]。
+没有的话，可以提交问题或发邮件到[邮件列表][group]或者在[#elm IRC 频道][irc]提问。
 
 [elm-platform]: https://github.com/elm-lang/elm-platform/issues
 [group]: https://groups.google.com/forum/?fromgroups#!forum/elm-discuss
