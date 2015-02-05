@@ -12,12 +12,12 @@ import Window
 
 
 port title : String
-port title = "例子"
+port title = "代码样例"
 
 
 main : Signal.Signal Element
 main =
-  Signal.map (skeleton "Examples" body) Window.dimensions
+  Signal.map (skeleton "代码样例" body) Window.dimensions
 
 
 body outer =
@@ -38,63 +38,59 @@ content =
 
 words = Markdown.toElement """
 
-# Examples
+# 代码样例
 
-This page will help you *learn by example* as you read and modify
-Elm code in the [online editor](/try). It is split into sections
-that will help you grow from beginner to expert:
+学习页面上列出的这些例子可以帮你快速的熟悉Elm编程语言，这些例子都可以*[在线编辑运行](/try)*：
 
- * [Basics](#basics) &mdash; small programs focused on showing one concept
- * [Intermediate](#intermediate) &mdash; larger examples that combine basic concepts
- * [Big Projects](#big-projects) &mdash; websites and games written in Elm
+ * [基础入门](#basics) &mdash; 展示语法和设计的简单例子；
+ * [稍稍复杂](#intermediate) &mdash; 稍微复杂的例子；
+ * [完整应用演示](#big-projects) &mdash; 用Elm编写的可运行的网站和游戏；
 
-Remember to check the [Elm syntax reference][syntax] when you see new syntax!
-See the [learning resources](/Learn.elm) if you want to learn the fundamentals
-of the language *not* by example. The [library documentation](/Libraries.elm)
-is a very information dense resource once you become familiar with Elm.
+当看到不明白的语法时记得查阅[Elm语法参考][syntax]。
+如果你不看例子光看[ELm基础知识](/Learn.elm)就能学会那更好。
+熟悉了语法以后就可以去看看[公共库的文档](/Libraries.elm)，可以学到更多的东西。
 
   [syntax]: /learn/Syntax.elm "The Syntax of Elm"
 
-<h2 id="basics">Basics</h2>
+<h2 id="basics">基础入门</h2>
 
 """
 
 intermediate = Markdown.toElement """
 
-<h2 id="intermediate">Intermediate</h2>
+<h2 id="intermediate">稍稍复杂</h2>
 
 """
 
 projects = Markdown.toElement """
 
-<h2 id="big-projects">Big Projects</h2>
+<h2 id="big-projects">完整应用演示</h2>
 
-These are all larger projects created with Elm. Fork them and use them
-as templates for your own project!
+下列是用Elm编写的完整应用，都放在了Github上，可以Fork出来研究。
 
-#### Websites
+#### 网站
 
  * [elm-todomvc](https://github.com/evancz/elm-todomvc) &mdash;
-   todo list modelled on [TodoMVC](http://todomvc.com/)
+   用Elm编写的[TodoMVC](http://todomvc.com/)；
  * [elm-lang.org](https://github.com/elm-lang/elm-lang.org) &mdash;
-   frontend and backend code for this website
+   此网站的前后台代码；
  * [package.elm-lang.org](https://github.com/elm-lang/package.elm-lang.org) &mdash;
-   frontend and backend code for the package website
+   package子站的源代码；
  * [Reddit Time Machine](https://github.com/Dobiasd/RedditTimeMachine) &mdash;
-   Check out what was up on reddit days/weeks/months ago, by Tobias Hermann
+   从Reddit上面拉取新鲜事， by Tobias Hermann；
  * [EAN/UPC-A Barcode Generator](https://github.com/Dobiasd/Barcode-Generator) &mdash;
-   with addon2/addon5 and real-time output, by Tobias Hermann
+   条形码实时生成, by Tobias Hermann；
 
-#### Games
+#### 游戏
 
- * [Tetris](https://github.com/jcollard/elmtris) &mdash;
-   by Joe Collard
- * [Breakout](https://github.com/Dobiasd/Breakout#breakout--play-it) &mdash;
-   by Tobias Hermann
+ * [俄罗斯方块](https://github.com/jcollard/elmtris) &mdash;
+   by Joe Collard；
+ * [打砖块](https://github.com/Dobiasd/Breakout#breakout--play-it) &mdash;
+   by Tobias Hermann；
  * [Maze](https://github.com/Dobiasd/Maze#maze--play-it) &mdash;
-   by Tobias Hermann
- * [Demoscene-Concentration](https://github.com/Dobiasd/Demoscene-Concentration) &mdash;
-   the classical memory game with (simple) old-school demoscene effects, by Tobias Hermann
+   by Tobias Hermann；
+ * [记忆消除](https://github.com/Dobiasd/Demoscene-Concentration) &mdash;
+   by Tobias Hermann；
  * [Froggy](https://github.com/thSoft/froggy) &mdash; by Dénes Harmath
 
 """
