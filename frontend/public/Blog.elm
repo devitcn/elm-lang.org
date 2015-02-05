@@ -27,17 +27,17 @@ blog = Markdown.toElement """
 
 ### Articles
 
- * [Introducing Elm Reactor](/blog/Introducing-Elm-Reactor.elm)
- * [Blazing Fast HTML](/blog/Blazing-Fast-Html.elm)
- * [Elm&rsquo;s Time Traveling Debugger](http://debug.elm-lang.org)
- * [Elm package manager](/blog/announce/PackageManager.elm)
+ * [Elm 反应式编程介绍](/blog/Introducing-Elm-Reactor.elm)
+ * [超快得DOM操作](/blog/Blazing-Fast-Html.elm)
+ * [Elm 基于时间线的调试器](http://debug.elm-lang.org)
+ * [Elm 包管理器](/blog/announce/PackageManager.elm)
  * [Elm REPL](/blog/announce/Repl.elm)
- * [Hot-swapping in Elm](/blog/Interactive-Programming.elm)
- * [Concepts behind the Elm Logo](https://prezi.com/npjjrmt_badc/tangrams-logo/)
+ * [Elm中的热部署](/blog/Interactive-Programming.elm)
+ * [Elm Logo 背后的思想](https://prezi.com/npjjrmt_badc/tangrams-logo/)
  * [Elm in VentureBeat](http://venturebeat.com/2013/07/26/why-i-designed-a-front-end-programming-language-from-scratch/)
  * [Elm &hearts; Prezi](/blog/announce/Elm-and-Prezi.elm)
- * [Escape from Callback Hell](/learn/Escape-from-Callback-Hell.elm)
- * [Making Pong](/blog/Pong.elm)
+ * [从回调中解放出来](/learn/Escape-from-Callback-Hell.elm)
+ * [写一个乒乓游戏](/blog/Pong.elm)
 
 ### Release Notes
 
@@ -82,14 +82,11 @@ blog = Markdown.toElement """
   [14]: /blog/announce/0.14.elm
   [141]: https://groups.google.com/forum/#!topic/elm-announce/6zRwjN68Ap0
 
-### Conference Videos
+### 视频会议
 
-* [StrangeLoop 2013][sl2013] &mdash; The best one so far! Teaches the basics of
-  graphics and FRP in Elm and builds up to implementing a basic [Mario
-  game](/edit/examples/Intermediate/Mario.elm) *and* it is pretty fun to watch.
-* [mloc.js 2013][mlocjs] &mdash; a less polished version of the StrangeLoop 2013 talk.
-* [StrangeLoop 2012][sl2012] &mdash; First conference talk ever. Covers the basics of
-  graphics and FRP before Elm even had its record system!
+* [StrangeLoop 2013][sl2013] &mdash; 目前最好的一个! 教你使用Elm中基本的图像绘制和FRP，建立一个简单的[马里奥游戏](/edit/examples/Intermediate/Mario.elm) 这是非常让人赏心悦目。.
+* [mloc.js 2013][mlocjs] &mdash; 一个简洁的 StrangeLoop 2013 讨论.
+* [StrangeLoop 2012][sl2012] &mdash; 一个里程碑的会议. 涵盖了Elm基础的图形绘制和FRP知识，从此Elm载入史册!
 
  [sl2013]: http://www.infoq.com/presentations/elm-reactive-programming
  [mlocjs]: http://www.ustream.tv/recorded/29330499
