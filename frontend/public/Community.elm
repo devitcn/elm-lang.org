@@ -6,9 +6,9 @@ import Website.Skeleton (skeleton)
 import Window
 
 port title : String
-port title = "Community"
+port title = "社区和支持"
 
-main = skeleton "Community" content <~ Window.dimensions
+main = skeleton "社区和支持" content <~ Window.dimensions
 
 content outer =
     let center elem =
@@ -17,52 +17,41 @@ content outer =
 
 community = Markdown.toElement """
 
-# Community
+# 社区和支持
 
-### Mailing list
+### 邮件列表
 
 [list]: https://groups.google.com/forum/?fromgroups#!forum/elm-discuss "mailing list"
 
-The [mailing list][list] is a great place for friendly discussion! Common
-activities include discussing API design, reviewing blog posts and libraries,
-and finding projects to collaborate on. Share code snippets with
-[share-elm.com](http://www.share-elm.com).
+[Google Group上的邮件列表][list]是讨论问题的好地方(-_-!)。 常见话题有API设计、文档、库还有合作开发。
+另外还有一个分享代码片段的好地方：[share-elm.com](http://www.share-elm.com).
 
-This list is all about learning and improvement, so even if you know a lot
-about Elm or functional programming, be humble and open to learning new things
-from anyone! Try to read some old emails to get a feel for the culture and who
-everyone is.
+邮件列表是学习和提高的地方，所以即使你已经知道了很多ELm的东西，也记得要谦虚谨慎，保持学习的心态。
+试着翻一翻历史邮件感受一下学习氛围或者认识其他的人。
 
 ### Reddit
 
 [reddit]: http://www.reddit.com/r/elm
 
-Check out [/r/elm][reddit] to find out about new libraries and read blog posts.
-Or even better, use it to announce libraries and post your own blog posts!
+在[reddit/r/elm][reddit]上可以找到博客和类库还有学习文章，也可以发布你的博客和类库。!
 
 ### IRC
 
 [irc]: http://webchat.freenode.net/?channels=elm
 
-Got a quick question, but do not feel comfortable asking on the mailing list?
-Chatting on [#elm][irc] is a great way to learn from a real person. Share code
-snippets with [share-elm.com](http://www.share-elm.com).
+在[IRC#elm频道上][irc]可以向在线的其他人直接提问。
 
-As for culture, prefer to ask rather than tell. You may be talking to someone
-with no programming background or a PhD in programming languages, so to answer
-a question well, you should start by asking some questions yourself! This way
-we can avoid XY problems, and better yet, have a culture that is kind and
-respectful to everyone.
+在提问的时候记得注意礼貌，你可能会碰到高手或者新手，提问之前组织一下语言，再反问一下自己这样问是否合适。
+
 
 ### Twitter
 
 [twitter]: https://twitter.com/elmlang
 
-Both [@elmlang][twitter] and [@czaplic](https://twitter.com/czaplic) tweet about
-Elm a lot. The #elmlang hashtag is commonly used. Using #elm is okay, but people
-tweet about weird stuff with that one sometimes.
+[@elmlang][twitter]和[@czaplic](https://twitter.com/czaplic)上的推文都是关于ELm的。
+最常用的标签是：#elmlang，用#elm倒是也可以，但有时会有点歧义。
 
-### Real Life
+### 线下聚会
 
 [Evan Czaplicki](http://github.com/evancz) will periodically organize [Elm user
 group](http://www.meetup.com/Elm-user-group-SF/) meetups in SF to talk about
@@ -74,16 +63,11 @@ would both be great places for meetups. The European community is also quite
 strong. We had [Elm Workshop](/blog/announce/Workshop-2013.elm) in 2013
 with speakers and attendees from all over Europe, so more of this!
 
-### Contribute
+### 做贡献
 
-There are a bunch of projects in [the elm-lang
-organization](http://github.com/elm-lang), including the compiler, REPL, server,
-package manager, debugger, public library, and this website.
+Elm组织负责的项目都放在[Github](http://github.com/elm-lang)上了，你可以fork出来共同开发，这其中有编译器、REPL、服务器、包管理器、调试器、公共类库、还有这个网站。
 
-We have found that a good way to make contributions is to hang out on the
-[mailing list][list] to learn about the ongoing challenges. Becoming a part of
-this discussion will make it much clearer how you can effectively help the
-community or a specific project based on your skills and interests.
+还有一个做贡献的好办法就是参加[邮件列表][list]中的热门讨论，可以更清晰的让社区知道你能够在哪些地方帮助Elm项目成长。
 
 """
 
