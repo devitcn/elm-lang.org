@@ -5,11 +5,11 @@ import Website.Skeleton (skeleton)
 import Window
 
 port title : String
-port title = "Intro to Lists and Records"
+port title = "介绍列表（Lists）和记录（Records）"
 
 main : Signal Element
 main =
-  skeleton "Learn" everything <~ Window.dimensions
+  skeleton "开始学习" everything <~ Window.dimensions
 
 
 everything : Int -> Element
@@ -52,7 +52,7 @@ you are about to learn how to work with lists and records.
 The following video and [practice problems](#practice-problems)
 are designed to help you dive into lists and records.
 
-The video is followed by some exercises. You can use the [online editor](http://elm-lang.org/try) 
+The video is followed by some exercises. You can use the [online editor](http://elm-lang.org/try)
 to follow along and start experimenting on your own.
 """
 
@@ -68,11 +68,9 @@ video = Markdown.toElement """
 
 intro = Markdown.toElement """
 
-<h1 id="practice-problems">Practice Problems</h1>
+<h1 id="practice-problems">答题练习</h1>
 
-These problems will challenge you to use and expand upon your knowledge of
-lists and records. Remember that case expressions and pattern matching are
-your friends!
+这几个问题会让你思考如何应用列表和记录。记得使用case表达式和模式匹配。
 
   1. Write `product` which gets the product of a list:
 

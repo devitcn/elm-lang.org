@@ -6,12 +6,12 @@ import Window
 
 
 port title : String
-port title = "Intro to Graphics"
+port title = "介绍绘图"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" everything <~ Window.dimensions
+  skeleton "开始学习" everything <~ Window.dimensions
 
 
 everything : Int -> Element
@@ -71,28 +71,26 @@ put many graphical elements together. Once we are good at putting
 rectangular shapes together, we will branch out to the wild west
 of triangles, pentagons, and circles.
 
-# Elements
+# 元素（Elements）
 
-Basic graphical elements are called *elements* in Elm. An element is a rectangle
+在Elm中基本可绘制的东西都叫做*元素（elements）*。一个元素是一个有宽度和高度的长方形。 in Elm. An element is a rectangle
 with a known width and height. Unlike triangles and pentagons, rectangles are
 no-nonsense shapes that can be put together very easily.
 
-There are many built-in functions that will help us create all of these
-graphical elements. First we are going to cover images and text.
+有许多内建函数可以帮助创建图形元素。这里先讲图片和文本。
 
-### Images
+### 图片（Images）
 
-We will start with a classic cartoon bear.
+让我们用一张小熊的图片开始。
 
 ```haskell
 main = image 200 200 "/yogi.jpg"
 ```
 
-Pictures have a width, height, and file name.
-That file can be anything on the internet. We chose Yogi Bear, but
-we could have chosen
+图片有宽度、高度、和文件路径三个参。
+文件可以是网络能访问到的任意图片。这个例子中选择了本地的瑜伽熊，你可以替换成其他的图片，
 [Hermann Hesse](http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Hermann_Hesse_2.jpg/501px-Hermann_Hesse_2.jpg)
-or [Saturn](http://upload.wikimedia.org/wikipedia/commons/2/25/Saturn_PIA06077.jpg)
+或 [Saturn](http://upload.wikimedia.org/wikipedia/commons/2/25/Saturn_PIA06077.jpg)
 
 Maybe we decide to look at some shells from South Africa:
 
@@ -100,16 +98,15 @@ Maybe we decide to look at some shells from South Africa:
 main = image 400 200 "/shells.jpg"
 ```
 
-That image looks a little weird. The `image` function just stretches the
-image to fit the dimensions. Let’s fix that!
+图片看上去有点变形。是因为`image`函数将图片拉伸以适应指定的宽度和高度参数。让我们稍作调整。
 
 ```haskell
 main = fittedImage 400 200 "/shells.jpg"
 ```
 
-Lookin&rsquo; good.
+好多了（框还是400 200大小）。
 
-### Text
+### 文字（Text）
 
 In the first class, we used `asText` to show
 very simple values, but it always used a monospace font.
@@ -142,7 +139,7 @@ So bullet points look a lot like bullet points, and paragraphs are actually
 separated like paragraphs. It tends to do the right thing, but if not,
 you can look up the details [here](http://daringfireball.net/projects/markdown/syntax).
 
-### Stacking Things
+	### Stacking Things
 
 Now that we have some basic elements, the next step is to start putting them
 together. We do this with the `flow` function.
@@ -162,7 +159,7 @@ You can change down to be lots of different things. Your options are:
 `up`, `down`, `left`, `right`, `inward`, and `outward`. They do what
 they say they do. Try some of them!
 
-# Forms
+# 形状（Forms）
 
 Rectangles are cool and all, but sometimes you just need a pentagon.
 In Elm, irregular shapes that cannot be stacked easily are called *forms*.

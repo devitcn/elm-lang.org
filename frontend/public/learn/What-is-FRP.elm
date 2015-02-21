@@ -11,12 +11,12 @@ import Website.ColorScheme as C
 import Window
 
 port title : String
-port title = "What is a Signal?"
+port title = "信号的概念解释?"
 
 
 main : Signal Element
 main =
-  Signal.map2 (skeleton "Learn")
+  Signal.map2 (skeleton "开始学习")
       (Signal.map view (box examples1))
       Window.dimensions
 
@@ -52,14 +52,11 @@ viewIntro exs w =
 
 what1 = Markdown.toElement """
 
-# What is a Signal?
+# 什么是信号?
 
-A *signal* is a value that changes over time. They are the backbone of an
-interactive Elm app.
+*信号*是一个随着时间而变化的量。 它们构成了Elm程序交互的基础。
 
-You can see some signals in action in the blue box to the right.
-Take a second to play around with each of the examples. Try to make them change
-and guess what they do.
+在右面蓝色框中可以看到真实的信号的例子，尝试让他们发生变化来理解其功用。
 
 The first example is the position of the mouse. In Elm, the mouse position
 is represented by a signal named `Mouse.position`. When the mouse moves, the
@@ -80,7 +77,7 @@ These examples are just the basics of signals. More information on how to use
 signals can be found in [this tutorial](/learn/Using-Signals.elm) and in
 [the documentation](http://package.elm-lang.org/packages/elm-lang/core/latest/Signal).
 There are also tons of other [interactive examples](/Examples.elm) that allow
-you to play around with FRP in [Elm](/). 
+you to play around with FRP in [Elm](/).
 
 """
 

@@ -6,12 +6,12 @@ import Window
 
 
 port title : String
-port title = "Elm Syntax"
+port title = "Elm语法参考"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" content <~ Window.dimensions
+  skeleton "开始学习" content <~ Window.dimensions
 
 
 content : Int -> Element
@@ -22,37 +22,37 @@ content w =
 intro : Element
 intro = Markdown.toElement """
 
-# The Syntax of Elm
+# Elm语法参考
 
-This syntax reference is a minimal introduction to:
+Elm的基本语法参考:
 
-- [Comments](#comments)
-- [Literals](#literals)
-- [Lists](#lists)
-- [Conditionals](#conditionals)
-- [Union Types](#union-types)
-- [Records](#records)
-- [Functions](#functions)
+- [注释（Comments）](#comments)
+- [字面量（Literals）](#literals)
+- [列表（Lists）](#lists)
+- [条件表达式（Conditionals）](#conditionals)
+- [共用体Union Types](#union-types)
+- [记录（Records）](#records)
+- [函数（Functions）](#functions)
 - [Infix Operators](#infix-operators)
-- [Let Expressions](#let-expressions)
+- [Let表达式（Let Expressions）](#let-expressions)
 - [Applying Functions](#applying-functions)
 - [Mapping with `(<~)` and `(~)`](#mapping)
-- [Modules](#modules)
-- [Type Annotations](#type-annotations)
-- [Type Aliases](#type-aliases)
+- [模块（Modules）](#modules)
+- [类型声明（Type Annotations）](#type-annotations)
+- [类型别名（Type Aliases）](#type-aliases)
 - [JavaScript FFI](#javascript-ffi)
-- [Things *not* in Elm](#things-not-in-elm)
+- [还*不*支持的东西](#things-not-in-elm)
 
 Check out the [learning resources](/Learn.elm) for
 tutorials and examples on actually *using* this syntax.
 
-### Comments
+### 注释（Comments）
 
 ```haskell
--- a single line comment
+--单行注释
 
-{- a multiline comment
-   {- can be nested -}
+{- 多行注释
+   {- 也能嵌套 -}
 -}
 ```
 
@@ -66,7 +66,7 @@ add x y = x + y
 
 Just add or remove the `}` on the first line and you'll toggle between commented and uncommented!
 
-### Literals
+### 字面量（Literals）
 
 ```haskell
 -- Boolean
@@ -79,7 +79,7 @@ False : Bool
 'a'   : Char
 "abc" : String
 
--- multi-line String
+-- 多行字符串
 \"\"\"
 This is useful for holding JSON or other
 content that has "quotation marks".
@@ -94,9 +94,9 @@ True && not (True || False)
 "abc" ++ "def"
 ```
 
-### Lists
+### 列表（Lists）
 
-Here are four things that are equivalent:
+下面这四种写法含义相等：
 
 ```haskell
 [1..4]
@@ -105,7 +105,7 @@ Here are four things that are equivalent:
 1 :: 2 :: 3 :: 4 :: []
 ```
 
-### Conditionals
+### 条件表达式（Conditionals）
 
 ```haskell
 if powerLevel > 9000 then "OVER 9000!!!" else "meh"
@@ -139,8 +139,7 @@ case n of
   _ -> fib (n-1) + fib (n-2)
 ```
 
-Each pattern is indentation sensitive, meaning that you have to align
-all of your patterns.
+在使用这种写法的时候，要注意对齐子条件的缩进。
 
 ### Union Types
 

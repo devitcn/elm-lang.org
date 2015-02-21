@@ -6,12 +6,12 @@ import Website.Skeleton (skeleton)
 import Window
 
 port title : String
-port title = "Intro to Programming"
+port title = "Elm Hello World"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" everything <~ Window.dimensions
+  skeleton "开始学习" everything <~ Window.dimensions
 
 
 everything : Int -> Element
@@ -35,7 +35,7 @@ everything wid =
 pageTitle = Markdown.toElement """
 <br/>
 <div style="font-family: futura, 'century gothic', 'twentieth century', calibri, verdana, helvetica, arial; text-align: center;">
-<div style="font-size: 4em;">Introduction to Programming</div>
+<div style="font-size: 4em;">Elm Hello World</div>
 </div>
 """
 
@@ -70,72 +70,68 @@ Okay, now we are going to cover the same material, but in text form. This is nic
 for skimming or review or whatever.
 
 ### Hello World
-Every coder’s first program is “Hello World!”. Welcome to the club!
+每种编程语言介绍的第一个例子都是“Hello World!”。
 
 ```haskell
 main = asText "Hello World!"
 ```
 
-`main` is what gets shown on screen. `asText` will turn anything
-into text that can be shown on screen.
+`main`是个入口变量，在这里定义了将要显示在频幕上的内容。`asText`的意思是将后面任意类型的值转换成文本，以便于显示。
 
 
-### Numbers
+### 数值（Numbers）
 
-You can also do simple mathematics.
+可以同时进行基本数学运算。
 
 ```haskell
 main = asText 42
 ```
 
-Addition uses the plus sign.
+用“+”号表示加法。
 
 ```haskell
 main = asText (2 + 2)
 ```
 
-This is similar to using a graphing calculator or doing math on paper.
-Note that `*` means multiply, `/` means divide, and `^` means “to the power of”
+用“`*`”表示乘法，用“`/`”表示除法，“`^`”表示乘方。
 
-This is 3 times 4 over 2
+这个式子表示3乘以4除以2。
 
 ```haskell
 main = asText (3 * 4 / 2)
 ```
 
-Here we compute (3<sup>2</sup> + 4<sup>2</sup>)
+计算（3<sup>2</sup> + 4<sup>2</sup>）
 
 ```haskell
 main = asText (3^2 + 4^2)
 ```
 
-### Strings
+### 字符串
 
-Strings are sequences of letters. We can put them together with the `++` operator.
+字符串是由字符组成的序列，字符串的连接操作用“`++`”表示。
 
 ```haskell
 main = asText ("Hello " ++ "Steve!")
 ```
 
-### Lists
-Lists are a sequence of things. All the things must be the same type
-of thing though! For instance, the list can be all numbers:
+### 列表（数组）
+列表由同一类型的变量、常亮构成。列表中的元素的数据类型必须统一。下面这个例子表示了有个数字列表：
 
 ```haskell
 main = asText [1,2,3]
 ```
 
-Or a list can be all strings:
+一个字符串列表。
 
 ```haskell
 main = asText ["Sally", "Steve", "Tom"]
 ```
 
-Note: square braces, curly braces, and parentheses are all mean
-*different* things! Be careful!
+注意：不同的括号所表示的含义*不*一样！
 
 
-### Boolean Logic
+### 布尔逻辑
 This is a fancy way to say that we can talk about things being `True` and `False`.
 
 ```haskell
@@ -172,7 +168,7 @@ Does capitalization matter? (Hint: YES!!!)
 main = asText ("Hello" == "hello")
 ```
 
-### Conditionals
+### 条件表达式
 Now we are going to use boolean logic for something more useful.
 
 ```haskell
@@ -187,7 +183,7 @@ main = asText (if 9500 < 9000 then "meh"
                               else "It's over 9000!!!")
 ```
 
-### Variables
+### 变量
 This lets us “save” values to use later. Say we define a number that we’d
 like to use in two places.
 
@@ -230,7 +226,7 @@ main = asText (if powerLevel < 9000 then "meh"
                                     else "It's over 9000!!!")
 ```
 
-### Functions
+### 函数
 
 A function is a way of reusing variables. Right now it is hard to say hello to
 two people; we’d have to write the same code twice! To avoid this, we can
@@ -275,7 +271,7 @@ average n m = (n + m) / 2
 main = asText [ average 3 4, average 5 12 ]
 ```
 
-### Functions that depend on themselves!
+### 函数的递归
 
 Remember the definition of [factorial][] from school?
 It is the product of all numbers between 1 and *n*, and it
@@ -302,7 +298,7 @@ main = asText (factorial 3)
 That was a quick overview of the basics of programming. To practice these
 ideas, read on and try the practice problems!
 
-# Practice Problems
+# 答题练习
 
 These problems are a way for you to get more familiar writing code and *thinking*
 like a programmer.
@@ -330,7 +326,7 @@ problems = Markdown.toElement """
 The standard equation is
 <img src="http://upload.wikimedia.org/math/3/a/e/3ae71ab3eb71d3d182a3b9e437fba6ee.png"
      style="width:100px; height:20px;"></img>
-but to make it easier to *find x*, we can write it as 
+but to make it easier to *find x*, we can write it as
 <img src="http://upload.wikimedia.org/math/3/b/8/3b84a4234e90bf69db1029281d06e174.png"
      style="width:114px; height:21px;"></img>
 </div>
