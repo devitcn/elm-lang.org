@@ -5,18 +5,18 @@ import Website.Skeleton (skeleton)
 import Window
 
 port title : String
-port title = "Using Signals"
+port title = "信号的用法"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" (\w -> width (min 600 w) content) <~ Window.dimensions
+  skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
 
 
 content : Element
 content = Markdown.toElement """
 
-# Using Signals
+# 信号的用法
 
 Signals are values that change over time. You can learn more about the basics
 of signals in [this post][frp] and in [the examples](/Examples.elm). This post
@@ -27,7 +27,7 @@ common pitfalls and how to get out of them.
 [frp]: /learn/What-is-FRP.elm
 
 
-## Inputs
+## 输入（Inputs）
 
 Every Elm program starts with an input. Something like [`Mouse.position`][pos]
 or [`Window.dimensions`][dim] that gives you information about the world and
@@ -45,7 +45,7 @@ These values will change as the mouse moves or as the browser window resizes.
 Inputs like these will be the starting point for updates in every Elm program.
 
 
-## Transforming Signals
+## 信号传递（Transforming Signals）
 
 One of the most important things you can do with a signal is transform it into
 something else. We use the `map` function for this.
@@ -71,7 +71,7 @@ Now every pair of dimensions is turned into an aspect ratio. As the window
 resizes, `aspectRatio` is updated automatically.
 
 
-## Merging Signals
+## 合并多个信号（Merging Signals）
 
 It is often useful to put multiple signals together. You can use `merge` or
 `map2`, each with slightly different results. Lets look at `merge` first.
@@ -112,7 +112,7 @@ responsible for the updating. A common mistake is to use `map2` instead of
 `merge`, so keep this distinction in mind!
 
 
-## State
+## 状态（State）
 
 One of the most important uses of signals is to hold state. We do this with a
 function called `foldp` which is short for &ldquo;fold from the past&rdquo;.
@@ -138,7 +138,7 @@ our count with the function we provided.
 You will see `foldp` in pretty much all non-trivial Elm programs.
 
 
-## Filtering Signals
+## 过滤（Filtering Signals）
 
 Sometimes it is useful to filter certain updates, though it does not come up
 super frequently. For example, lets say I want to have a signal that represents
@@ -167,7 +167,7 @@ that work in similar ways. Again, these signal functions are quite a bit more
 rare than the others, but can still come in handy sometimes.
 
 
-## The Typical Pattern
+## 典型应用模式（The Typical Pattern）
 
 When writing Elm code, it is usually best to use signals as little as possible.
 They help you handle inputs from the world and manage state, but when it comes
@@ -216,7 +216,7 @@ When writing large applications, use the techniques described
 codebase grows.
 
 
-## Common Pitfalls
+## 常见的坑（Common Pitfalls）
 
 A common way to get stuck using signals is to try to use them too much. It is
 tempting to try to do everything with signals, but it is usually best to write

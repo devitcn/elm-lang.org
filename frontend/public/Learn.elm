@@ -20,10 +20,9 @@ info = Markdown.toElement """
 
 # 开始学习
 
-The [syntax reference](/learn/Syntax.elm) is a good place to start.
-The [examples page](/Examples.elm) is intended to help you learn by
-example, slowly building up skills. This page provides more in-depth
-documentation.
+高手的话可以直接从[语法参考](/learn/Syntax.elm)开始看。
+喜欢先从例子开始学习的人可以移步[代码样例](/Examples.elm)来逐步的学习。
+这个页面提供一些系统的有深度的文档。
 
 ### 初学者课程
 
@@ -33,7 +32,7 @@ documentation.
 
 ### 基本资源
 
-* [Syntax reference](/learn/Syntax.elm) &mdash; 全面的介绍ELm的语法
+* [语法参考](/learn/Syntax.elm) &mdash; 全面的介绍ELm的语法
 * [FAQ](/learn/FAQ.elm) &mdash; 常见问题解答
 
 ### 基础结构（Building Blocks）
@@ -66,7 +65,7 @@ documentation.
 
 [elm-html]: /blog/Blazing-Fast-Html.elm
 
-### 出版物
+### 线上杂志
 
 * [Concurrent FRP for GUIs][thesis] &mdash; very accessible history of FRP and overview of Elm
 * [Asynchronous FRP for GUIs][pldi] &mdash; formal semantics of Elm from PLDI 2013

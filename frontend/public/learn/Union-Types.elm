@@ -6,17 +6,17 @@ import Window
 
 
 port title : String
-port title = "Union Types"
+port title = "共用体（Union Types）"
 
 
 main : Signal Element
-main = skeleton "Learn" (\w -> width (min 600 w) content) <~ Window.dimensions
+main = skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
 
 
 content : Element
 content = Markdown.toElement """
 
-# Union Types
+# 共用体（Union Types）
 
 A union type is a way to put together many different types. If you have Java
 background, think of them as enums on steroids.
@@ -117,7 +117,7 @@ map userPhoto activeUsers
 All the users are turned into image resources. Okay, but union types can still
 do more!
 
-## Putting Types Together
+## 声明多个类型（Putting Types Together）
 
 Union types are all about putting together different types. We have seen some
 special cases so far, but union types are much more flexible and are an
@@ -173,7 +173,7 @@ All of these strategies can be used if you are making a game and have a bunch
 of different bad guys. Goombas should update one way, but Koopa Troopas do
 something totally different. Use a union type to put them all together!
 
-## No more NULL
+## 再也没有空指针（No more NULL）
 
 Tons of languages have a concept of `null`. Any time you think you have a
 `String` you just might have a `null` instead. Should you check? Did the person
@@ -210,7 +210,7 @@ sneaking around. This may seem like a subtle improvement, but think about what
 your life will be like when you never have to hunt for a null pointer
 exception again!
 
-## Recursive Data Structures
+## 递归的数据结构（Recursive Data Structures）
 
 If you have ever implemented a [linked list](https://en.wikipedia.org/wiki/Linked_list)
 in C or Java you will appreciate how easy this is in Elm.
@@ -270,7 +270,7 @@ sum (Node 1 (Node 2 (Node 3 Empty)))
 On each line, we see one evaluation step. When we call `sum` it transforms the
 list based on whether it is looking at a `Node` or an `Empty` value.
 
-## Additional Resources
+## 其他资源（Additional Resources）
 
 We can create all sorts of data structures, like [binary trees][binary].
 

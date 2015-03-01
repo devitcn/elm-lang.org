@@ -26,22 +26,22 @@ intro = Markdown.toElement """
 
 Elm的基本语法参考:
 
-- [注释（Comments）](#comments)
-- [字面量（Literals）](#literals)
-- [列表（Lists）](#lists)
-- [条件表达式（Conditionals）](#conditionals)
-- [共用体Union Types](#union-types)
-- [记录（Records）](#records)
-- [函数（Functions）](#functions)
-- [Infix Operators](#infix-operators)
-- [Let表达式（Let Expressions）](#let-expressions)
-- [Applying Functions](#applying-functions)
-- [Mapping with `(<~)` and `(~)`](#mapping)
-- [模块（Modules）](#modules)
-- [类型声明（Type Annotations）](#type-annotations)
-- [类型别名（Type Aliases）](#type-aliases)
-- [JavaScript FFI](#javascript-ffi)
-- [还*不*支持的东西](#things-not-in-elm)
+- [注释（Comments）](#-comments-)
+- [字面量（Literals）](#-literals-)
+- [列表（Lists）](#-lists-)
+- [条件表达式（Conditionals）](#-conditionals-)
+- [共用体Union Types](#-union-types-)
+- [记录（Records）](#-records-)
+- [函数（Functions）](#-functions-)
+- [Infix Operators](#-infix-operators-)
+- [Let表达式（Let Expressions）](#-let-expressions-)
+- [Applying Functions](#-applying-functions-)
+- [Mapping with `(<~)` and `(~)`](#-mapping-)
+- [模块（Modules）](#-modules-)
+- [类型声明（Type Annotations）](#-type-annotations-)
+- [类型别名（Type Aliases）](#-type-aliases-)
+- [JavaScript FFI](#-javascript-ffi-)
+- [还*不*支持的东西](#-things-not-in-elm-)
 
 Check out the [learning resources](/Learn.elm) for
 tutorials and examples on actually *using* this syntax.

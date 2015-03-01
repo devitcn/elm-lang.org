@@ -11,7 +11,7 @@ port title = "Ports"
 
 main : Signal Element
 main =
-  skeleton "Learn" (\w -> width (min 600 w) intro) <~ Window.dimensions
+  skeleton "开始学习" (\w -> width (min 600 w) intro) <~ Window.dimensions
 
 
 intro : Element
@@ -27,7 +27,7 @@ send messages in and out of Elm so you can use JavaScript whenever you need to.
 code you can take a look at, but this document will explain
 the specifics of what you can and cannot do with ports.
 
-## From JavaScript to Elm
+## 从JavaScript中调用Elm
 
 To send messages from JavaScript to Elm, you use an incoming port like this:
 
@@ -47,7 +47,7 @@ myapp.ports.addUser.send([ "Sue", { age: 37, job: "accountant" } ]);
 This sends two updates to Elm, automatically converting to values that work
 well in Elm.
 
-## From Elm to JavaScript
+## 从Elm中调用JavaScript
 
 To send messages from Elm to JavaScript, you define an outgoing port like this:
 

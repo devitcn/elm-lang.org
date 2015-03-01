@@ -58,9 +58,8 @@ what1 = Markdown.toElement """
 
 在右面蓝色框中可以看到真实的信号的例子，尝试让他们发生变化来理解其功用。
 
-The first example is the position of the mouse. In Elm, the mouse position
-is represented by a signal named `Mouse.position`. When the mouse moves, the
-value of `Mouse.position` changes automatically ([see more][mouse]).
+第一个例子是显示鼠标位置的程序。在Elm中，鼠标的位置用名为`Mouse.position`的信号变量来表示。
+当鼠标位置发生变化时，`Mouse.position`的值会相应地自动改变（[详细资料][mouse]）。
 
   [mouse]: /edit/examples/Reactive/Position.elm "mouse"
 
@@ -68,16 +67,13 @@ value of `Mouse.position` changes automatically ([see more][mouse]).
 
 what2 = Markdown.toElement """
 
-The `Window.dimensions` signal works exactly the same way, automatically
-changing whenever the window is resized ([see more][dimensions]).
+`Window.dimensions`信号和前面鼠标位置的例子一样，每当窗口尺寸发生变化时就会自动改变([详情][dimensions])。
 
   [dimensions]: /edit/examples/Reactive/ResizePaint.elm "dimensions"
 
-These examples are just the basics of signals. More information on how to use
-signals can be found in [this tutorial](/learn/Using-Signals.elm) and in
-[the documentation](http://package.elm-lang.org/packages/elm-lang/core/latest/Signal).
-There are also tons of other [interactive examples](/Examples.elm) that allow
-you to play around with FRP in [Elm](/).
+这还是两个简单的实例。更详细的信息可以查看[这个教程](/learn/Using-Signals.elm)或者
+[文档](http://package.elm-lang.org/packages/elm-lang/core/latest/Signal)。
+还有更多的[实例](/Examples.elm)可供研究学习。
 
 """
 

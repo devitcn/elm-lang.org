@@ -15,7 +15,7 @@ import Window
 
 
 port title : String
-port title = "Escape from Callback Hell"
+port title = "从回调的深渊的解脱出来l"
 
 
 tagSearch : Signal.Channel Field.Content
@@ -38,7 +38,7 @@ content tagContent tagResponse search outerWidth =
   let sideBarWidth = 210
       contentWidth = min 600 (outerWidth - sideBarWidth)
       innerWidth = sideBarWidth + contentWidth
-      
+
       averageMargin = (outerWidth - contentWidth) // 2
       leftMargin =
           if averageMargin < sideBarWidth
@@ -110,7 +110,7 @@ searchBox = Signal.constant (color red (spacer 200 40))
 
 
 main =
-  Signal.map2 (skeleton "Learn") 
+  Signal.map2 (skeleton "Learn")
     (Signal.map3 content (Signal.subscribe tagSearch) tagResults searchBox)
     Window.dimensions
 

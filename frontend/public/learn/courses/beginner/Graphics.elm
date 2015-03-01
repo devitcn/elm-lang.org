@@ -139,7 +139,7 @@ So bullet points look a lot like bullet points, and paragraphs are actually
 separated like paragraphs. It tends to do the right thing, but if not,
 you can look up the details [here](http://daringfireball.net/projects/markdown/syntax).
 
-	### Stacking Things
+### Stacking Things
 
 Now that we have some basic elements, the next step is to start putting them
 together. We do this with the `flow` function.

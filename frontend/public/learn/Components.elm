@@ -6,18 +6,18 @@ import Website.ColorScheme
 import Window
 
 port title : String
-port title = "Embed Elm in HTML"
+port title = "将ELm程序嵌入到网页中"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" (\w -> width (min 600 w) intro) <~ Window.dimensions
+  skeleton "开始学习" (\w -> width (min 600 w) intro) <~ Window.dimensions
 
 
 intro : Element
 intro = Markdown.toElement """
 
-# Components: Embed in HTML
+# 将Elm嵌入网页
 
 Elm can be embedded directly in a `<div>`. This lets you easily integrate
 Elm into a larger JS project. An embedded Elm program is called a
@@ -49,7 +49,7 @@ Elm.embed(Elm.Stamper, div);
 The `Elm.embed` function takes two arguments:
 
   1. An Elm module. All modules are prefixed with `Elm` in JavaScript to avoid
-     namespace pollution, so our `Stamper` module becomes `Elm.Stamper`. 
+     namespace pollution, so our `Stamper` module becomes `Elm.Stamper`.
   2. A `<div>` to embed the program in.
 
 That's it!
@@ -62,7 +62,7 @@ clicks appropriately.
 Now that you can embed an Elm program, learn how to communicate
 between Elm and JS with [ports](/learn/Ports.elm).
 
-## Other ways to embed Elm
+## 其他的方法（Other ways to embed Elm）
 
 The example above embeds in a `<div>` but it is also possible to
 create Elm components that run fullscreen and ones that have no

@@ -7,7 +7,7 @@ import Window
 
 main : Signal Element
 main =
-  skeleton "Learn" (\w -> width (min 600 w) content) <~ Window.dimensions
+  skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
 
 
 content : Element

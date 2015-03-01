@@ -6,12 +6,12 @@ import Window
 
 
 port title : String
-port title = "Understanding Types"
+port title = "理解不同的的类型"
 
 
 main : Signal Element
 main =
-  skeleton "Learn" content <~ Window.dimensions
+  skeleton "开始学习" content <~ Window.dimensions
 
 
 content : Int -> Element
@@ -21,26 +21,23 @@ content w = width (min 600 w) intro
 intro : Element
 intro = Markdown.toElement """
 
-# Understanding Types
+# 类型介绍
 
 This page will go through some of the basic values in Elm, including primitives,
 data structures, and functions. It focuses on understanding their types, which
 can be hard to learn just by example and has big benefits once you get into the
 swing of things.
 
-## Primitives
+## 常量，原始值（Primitives）
 
-The basic building blocks of Elm are a set of primitive values that include
-strings, booleans, and numbers. For example, the number 42 is an integer. So
-to write down the type we say:
+构成Elm语言的基本元素是各类行常量，有：字符串、布尔、数字。举例：数字42是整型常量：
 
 ```haskell
 42 : Int
 ```
 
-This is read, &ldquo;42 has type `Int`&rdquo;. The term `Int` is the abbreviation
-for integers. The same works for all types of primitive values:
-
+这个可以读作： &ldquo;42是`Int`类型常量&rdquo;。 术语 `Int`是“integers”的缩写。
+对其他类型的常量也是这样子写：
 ```haskell
 True    : Bool      -- True is a boolean value
 3.1415  : Float     -- pi is a floating point number
@@ -65,7 +62,7 @@ properties.
 Types become more interesting and useful when you start working with more
 complicated values. So let&rsquo;s take a look at types for data structures.
 
-## Data Structures
+## 结构化数据（Data Structures）
 
 This section will cover lists, tuples, and [records][records]. It may help
 to find some examples or read some documentation on these data structures
@@ -73,7 +70,7 @@ before continuing.
 
  [records]: /learn/Records.elm "Records in Elm"
 
-### Lists
+### 列表，数组
 
 One of the most common data structures in Elm is the list. Lists can hold
 many values, and those values must all have the same type. For example,
@@ -94,7 +91,7 @@ names = ["Alice", "Bob", "Chuck"]
 Again, the key thing is that all elements of the list have exactly the
 same type.
 
-### Tuples
+### 元组（Tuples）
 
 Tuples are another useful data structure. A tuple can hold a fixed number of
 values, and each value can have any type. The most common use is for
@@ -115,10 +112,10 @@ book = ("Demian","Hesse",176)
 ```
 
 This illustrates that you can hold many different values, each with a different
-type. When the data structure becomes more complicated or specific, 
+type. When the data structure becomes more complicated or specific,
 it is often best to use records instead tuples.
 
-### Records
+### 记录（Records）
 
 Elm also has [records][records] which let you have more structured
 values. Say you want to make a list of high quality books. We can put
@@ -146,7 +143,7 @@ which `String` was the title and which was the author. You would have to
 read some code or do some experiment to figure it out. With records, it is
 totally clear and extracting a title is as simple as saying `book2.title`.
 
-## Functions
+## 函数（Functions）
 
 So far we have only looked at unchanging values, but this is *functional*
 programming! What about functions?!
@@ -197,7 +194,7 @@ takes two arguments and returns a list. Notice that we use the same type variabl
 for the input list `List a` and the output list `List a`. That means if you give
 an integer list `List Int`, you must get back an integer list `List Int`!
 
-### Higher-order Functions
+### 高阶函数（Higher-order Functions）
 
 There are some functions that take functions as arguments. One of the most
 common examples of this is the `map` function. It applies a function to every
@@ -275,7 +272,7 @@ that is valid but it does not do what you intended. Many programmers find
 that this kind of error is quite rare, so it is common that if it
 compiles, it works!
 
-## Wrap up
+## 总结
 
 We have taken an extremely quick tour through Elm's basic values and their
 types. Do not worry if you got lost at any point, it usually takes a while

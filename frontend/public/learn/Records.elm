@@ -8,11 +8,11 @@ import Website.Skeleton (skeleton)
 import Window
 
 port title : String
-port title = "Elm - Extensible Records"
+port title = "可扩展的Record类型"
 
-main = skeleton "Learn" (content << min 600) <~ Window.dimensions
+main = skeleton "开始学习" (content << min 600) <~ Window.dimensions
 
-content w = 
+content w =
   flow down
     [ width w intro
     , access w
@@ -35,7 +35,7 @@ content w =
 intro : Element
 intro = Markdown.toElement """
 
-# Extensible Records
+# 记录集类型（Extensible Records）
 
 Records are a labeled data structure. They provide a lightweight representation
 for complex data. You can think of records in Elm as similar to objects in
@@ -67,7 +67,7 @@ The structure of the following document is as follows:
 - [Polymorphic Fields](#polymorphic-fields)
 - [Record Types](#record-types)
 
-<h3 id="comparison-of-records-and-objects">Comparison of Records and Objects</h3>
+<h3 id="comparison-of-records-and-objects">Records和Objects两者异同</h3>
 
 Records in Elm are quite similar to objects in JavaScript. The major differences
 are that with records:
@@ -89,7 +89,7 @@ type.
 
  [st]: http://en.wikipedia.org/wiki/Structural_type_system "Structural Types"
 
-<h3 id="what-is-a-record">What is a Record?</h3>
+<h3 id="what-is-a-record">什么是“Record”？</h3>
 
 A record is a lightweight labeled data structure. For instance, if we
 wanted to represent a point we just create a record with an x and y field:
@@ -122,7 +122,7 @@ larry = { name="Page" , age=39 }
 people = [ bill, steve, larry ]
 ```
 
-<h3 id="access">Access</h3>
+<h3 id="access">调用（Access）</h3>
 
 There are a number of ways to access records:
 
@@ -161,7 +161,7 @@ in a single file because each of these records has a field `x`.
 Note that none these accessors pollute the global namespace.
 You can still have a value `x` independent of the `(.x)` accessor.
 
-<h3 id="pattern-matching">Pattern Matching</h3>
+<h3 id="pattern-matching">模式匹配（Pattern Matching）</h3>
 
 It is also possible to pattern match on records:
 
@@ -191,7 +191,7 @@ postMatches = Markdown.toElement """
 These patterns can appear in let expressions, lambda expressions,
 and case expressions.
 
-<h3 id="updating-records">Updating Records</h3>
+<h3 id="updating-records">更新（Updating Records）</h3>
 
 It is often useful to &ldquo;update&rdquo; the values in a record.
 
@@ -232,7 +232,7 @@ with and whether or not it is valid.
 The update functions allow you to write fairly elaborate update functions
 with little trouble.
 
-<h3 id="adding-deleting-and-renaming-fields">Adding, Deleting, and Renaming Fields</h3>
+<h3 id="adding-deleting-and-renaming-fields">对字段增、删、改（Adding, Deleting, and Renaming Fields）</h3>
 
 Record fields can be added and deleted with following syntax:
 """
@@ -287,7 +287,7 @@ postReplace = Markdown.toElement """
 
 The field update syntax is just a prettier way to write this!
 
-<h3 id="polymorphic-fields">Polymorphic Fields</h3>
+<h3 id="polymorphic-fields">字段多态（Polymorphic Fields）</h3>
 
 Elm allows [polymorphism][poly] within records, so a record field can
 hold a polymorphic function like list append `(++)`. For example:
@@ -331,7 +331,7 @@ make it possible to gain some of the flexibility of first-class modules
 and typeclasses, as described in
 [this announcement](/blog/announce/0.7.elm).
 
-<h3 id="record-types">Record Types</h3>
+<h3 id="record-types">类型声明（Record Types）</h3>
 
 A record type looks very similar to actual records. Say we wanted to work
 with points that have an `x` and `y` field. We could add type annotations
@@ -364,7 +364,7 @@ This syntax is just like the syntax for record extension, indicating that
 `Positioned a` is a record with at least an `x` and `y` field, etc.
 
 This means you can define records that have any subsection of these fields.
-For example, 
+For example,
 
 ```haskell
 lady : Named { age:Int }
