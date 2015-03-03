@@ -27,7 +27,7 @@ body outer =
 
 content =
   let w = 600
-      exs = [ ("Display",elements), ("React",reactive), ("Compute",functional) ]
+      exs = [ ("显示类",elements), ("交互类",reactive), ("算法类",functional) ]
   in
       width w words ::
       List.map (subsection w) exs ++
@@ -40,9 +40,9 @@ words = Markdown.toElement """
 
 # 代码样例
 
-学习页面上列出的这些例子可以帮你快速的熟悉Elm编程语言，这些例子都可以*[在线编辑运行](/try)*：
+本页上列出的这些例子可以帮你快速的熟悉Elm编程语言，这些例子都能*[直接在网页上修改并运行](/try)*：
 
- * [基础入门](#basics) &mdash; 展示语法和设计的简单例子；
+ * [基础入门](#basics) &mdash; 展示语法结构和设计原理的简单例子；
  * [稍稍复杂](#intermediate) &mdash; 稍微复杂的例子；
  * [完整应用演示](#big-projects) &mdash; 用Elm编写的可运行的网站和游戏；
 
@@ -113,62 +113,62 @@ addFolder folder lst =
   in  List.map f lst
 
 elements = addFolder "Elements/"
-  [ ("Words",
-        [ ("Text", "HelloWorld")
+  [ ("文本",
+        [ ("HelloWorld", "HelloWorld")
         , ("Markdown", "Markdown")
         ])
-  , ("Images",
+  , ("图片",
         [ ("Images", "Image")
         , ("Fitted", "FittedImage")
         , ("Cropped", "CroppedImage")
         ])
-  , ("Formatting",
+  , ("样式",
         [ ("Size"    , "Size")
         , ("Opacity" , "Opacity")
-        , ("Text"    , "Text")
-        , ("Typeface", "Typeface")
+        , ("字形"    , "Text")
+        , ("字体", "Typeface")
         ])
-  , ("Layout",
-        [ ("Simple Flow", "FlowDown1a")
-        , ("Flow Down"  , "FlowDown2")
-        , ("Layers"     , "Layers")
+  , ("布局",
+        [ ("流布局", "FlowDown1a")
+        , ("流布局2"  , "FlowDown2")
+        , ("层叠"     , "Layers")
         ])
-  , ("Positioning",
+  , ("定位",
         [ ("Containers", "Position")
         , ("Spacers"   , "Spacer")
         ])
-  , ("2D Shapes", [ ("Lines"     , "Lines")
+  , ("2D图形", [ ("Lines"     , "Lines")
                   , ("Shapes"    , "Shapes")
                   , ("Elements"  , "ToForm")
                   , ("Transforms", "Transforms")
                   ])
-  , ("2D Fills", [ ("Color"    , "Color")
-                 , ("Gradient", "LinearGradient")
-                 , ("Radial Gradient", "RadialGradient")
-                 , ("Texture"  , "Texture")
+  , ("2D填充 ", [ ("纯色"    , "Color")
+                 , ("线性渐变", "LinearGradient")
+                 , ("辐射渐变", "RadialGradient")
+                 , ("材质"  , "Texture")
                  ])
   ]
 
 
 functional = addFolder "Functional/"
-  [ ("Recursion",
-      [ ("Factorial"  , "Factorial")
-      , ("List Length", "Length")
-      , ("Zip"        , "Zip")
-      , ("Quick Sort" , "QuickSort")
+  [ ("递归",
+      [ ("阶乘"  , "Factorial")
+      , ("求数组长度", "Length")
+      , ("合并数组"        , "Zip")
+      , ("快速排序" , "QuickSort")
       ])
-  , ("Functions",
-      [ ("Functions"  , "Anonymous")
-      , ("Application", "Application")
-      , ("Composition", "Composition")
+  , ("函数类",
+      [ ("函数定义"  , "Anonymous")
+      , ("简写", "Application")
+      , ("函数组合", "Composition")
       , ("Infix Ops"  , "Infix")
       ])
-  , ("Higher-Order",
+  , ("高阶",
       [ ("Map"    , "Map")
       , ("Fold"   , "Sum")
       , ("Filter" , "Filter")
       ])
-  , ("Union Types",
+  , ("共用体",
       [ ("Maybe", "Maybe")
       , ("Boolean Expressions", "BooleanExpressions")
       , ("Tree", "Tree")
@@ -180,42 +180,42 @@ functional = addFolder "Functional/"
   ]
 
 reactive = addFolder "Reactive/"
-  [ ("Mouse",  [ ("Position", "Position")
-               , ("Presses"    , "IsDown")
-               , ("Clicks"    , "CountClicks")
-               , ("Yogi", "ResizeYogi")
-               , ("Track", "Transforms")
+  [ ("鼠标事件",  [ ("位置", "Position")
+               , ("按下事件"    , "IsDown")
+               , ("点击事件"    , "CountClicks")
+               , ("缩放", "ResizeYogi")
+               , ("跟随", "Transforms")
                ])
-  ,("Keyboard",[ ("Arrows"     , "Arrows")
+  ,("键盘事件",[ ("光标键"     , "Arrows")
                , ("wasd"       , "Wasd")
-               , ("Keys Down"  , "KeysDown")
-               , ("Key Presses", "CharPressed")
+               , ("按下事件"  , "KeysDown")
+               , ("点击事件", "CharPressed")
                ])
-  , ("Touch",  [ ("Raw", "Touches")
+  , ("触摸屏",  [ ("Raw", "Touches")
                , ("Touches", "Touch")
                , ("Taps", "Taps")
                , ("Draw", "Draw")
                ])
-  , ("Window", [ ("Size", "ResizePaint")
-               , ("Centering", "Centering")
+  , ("窗体", [ ("改变尺寸", "ResizePaint")
+               , ("文字居中", "Centering")
                ])
-  , ("Time",   [ ("FPS"     , "Fps")
+  , ("时间线",   [ ("FPS"     , "Fps")
                , ("FPS when", "FpsWhen")
                , ("Every"   , "Every")
                ])
-  , ("Input",  [ ("Text", "TextField")
-               , ("Password"  , "Password")
-               , ("Checkbox", "CheckBox")
-               , ("Drop Down", "DropDown")
+  , ("输入控件",  [ ("文本框", "TextField")
+               , ("密码框"  , "Password")
+               , ("复选框", "CheckBox")
+               , ("下拉框", "DropDown")
                ])
 --  , ("Random", [ ("Randomize", "Randomize") ])
 --  , ("Http",   [ ("Zip Codes", "ZipCodes") ])
-  , ("Filters",[ ("Sample", "SampleOn")
-               , ("Numbers Only", "KeepIf")
+  , ("过滤",[ ("Sample", "SampleOn")
+               , ("只能输入数字", "KeepIf")
                ])
-  , ("Ports",  [ ("Logging","Log")
-               , ("Set Title","Title")
-               , ("Redirect","Redirect")
+  , ("端口",  [ ("Logging","Log")
+               , ("设置标题","Title")
+               , ("重定向","Redirect")
                ])
   ]
 
