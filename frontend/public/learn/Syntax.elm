@@ -27,10 +27,10 @@ intro = Markdown.toElement """
 Elm的基本语法参考:
 
 - [注释（Comments）](#-comments-)
-- [字面量（Literals）](#-literals-)
-- [列表（Lists）](#-lists-)
+- [常量（Literals）](#-literals-)
+- [数组（Lists）](#-lists-)
 - [条件表达式（Conditionals）](#-conditionals-)
-- [共用体Union Types](#-union-types-)
+- [共用体（Union Types）](#-union-types-)
 - [记录（Records）](#-records-)
 - [函数（Functions）](#-functions-)
 - [Infix Operators](#-infix-operators-)
@@ -56,28 +56,27 @@ tutorials and examples on actually *using* this syntax.
 -}
 ```
 
-Here's a handy trick that every Elm programmer should know:
+介绍一个小技巧：
 
 ```haskell
 {--}
 add x y = x + y
 --}
 ```
+去掉第一行的“}”可以注释整个段落，可以方便的注释一段代码。
 
-Just add or remove the `}` on the first line and you'll toggle between commented and uncommented!
-
-### 字面量（Literals）
+### 常量（Literals）
 
 ```haskell
--- Boolean
+-- 布尔值 Boolean
 True  : Bool
 False : Bool
 
-42    : number  -- Int or Float depending on usage
-3.14  : Float
+42    : number  -- 根据运算场景来决定具体是整型还是浮点
+3.14  : Float --小数
 
-'a'   : Char
-"abc" : String
+'a'   : Char -- 字符
+"abc" : String --字符串
 
 -- 多行字符串
 \"\"\"
@@ -86,7 +85,7 @@ content that has "quotation marks".
 \"\"\"
 ```
 
-Typical manipulation of literals:
+典型常量运算表达式：
 
 ```haskell
 True && not (True || False)
@@ -94,9 +93,9 @@ True && not (True || False)
 "abc" ++ "def"
 ```
 
-### 列表（Lists）
+### 数组、列表（Lists）
 
-下面这四种写法含义相等：
+下面这四种写法含义相等（“::”是合并操作）：
 
 ```haskell
 [1..4]
@@ -111,9 +110,7 @@ True && not (True || False)
 if powerLevel > 9000 then "OVER 9000!!!" else "meh"
 ```
 
-Multi-way if-expressions make it easier
-to have a bunch of different branches.
-You can read the `|` as *where*.
+还有一种多路分支的简便写法如下，其中“|”可视作“当……”，“->”后面的是返回值，“otherwise”代表其他情况。
 
 ```haskell
 if | key == 40 -> n+1
@@ -121,8 +118,7 @@ if | key == 40 -> n+1
    | otherwise -> n
 ```
 
-You can also have conditional behavior based on the structure of algebraic
-data types and literals
+分支条件也可以基于数据结构和类型判断（case of）来做：
 
 ```haskell
 case maybe of
@@ -139,51 +135,50 @@ case n of
   _ -> fib (n-1) + fib (n-2)
 ```
 
-在使用这种写法的时候，要注意对齐子条件的缩进。
+在用这两种写法的时候，要注意对齐子条件的缩进。
 
-### Union Types
+### 共用体（Union Types）
 
 ```haskell
 type List = Empty | Node Int List
 ```
 
-Not sure what this means? [Read this](/learn/Pattern-Matching.elm).
+List的类型是Empty和Node两者的其中之一，[具体请看详细解释](/learn/Pattern-Matching.elm)。
 
-### Records
+### 记录集（Records）
 
-For more explanation of Elm&rsquo;s record system, see [this overview][exp],
-the [initial announcement][v7], or [this academic paper][records].
+有关Elm语言中记录集模块的详细介绍可以看[这篇概述][exp]，或[更新日志][v7]，或者[这篇学术论文][records].
 
   [exp]: /learn/Records.elm "Records in Elm"
   [v7]:  /blog/announce/0.7.elm "Elm version 0.7"
   [records]: http://research.microsoft.com/pubs/65409/scopedlabels.pdf "Extensible records with scoped labels"
 
 ```haskell
-point = { x = 3, y = 4 }       -- create a record
+point = { x = 3, y = 4 }       -- 构造一个记录对象
 
-point.x                        -- access field
+point.x                        -- 访问其中的“x”字段
 map .x [point,{x=0,y=0}]       -- field access function
 
-{ point - x }                  -- remove field
-{ point | z = 12 }             -- add field
-{ point - x | z = point.x }    -- rename field
-{ point - x | x = 6 }          -- update field
+{ point - x }                  -- 删除一个字段
+{ point | z = 12 }             -- 添加一个字段
+{ point - x | z = point.x }    -- 字段改名
+{ point - x | x = 6 }          -- 更新值
 
-{ point | x <- 6 }             -- nicer way to update a field
+{ point | x <- 6 }             -- 优雅的更新一个字段
 { point | x <- point.x + 1
-        , y <- point.y + 1 }   -- batch update fields
+        , y <- point.y + 1 }   -- 批量更新多个字段
 
-dist {x,y} = sqrt (x^2 + y^2)  -- pattern matching on fields
+dist {x,y} = sqrt (x^2 + y^2)  -- 字段匹配模式（在这个函数中，变量直接中记录集中查找）
 \\{x,y} -> (x,y)
 
-lib = { id x = x }             -- polymorphic fields
+lib = { id x = x }             -- 字段支持多态
 (lib.id 42 == 42)
 (lib.id [] == [])
 
 type alias Location = { line:Int, column:Int }
 ```
 
-### Functions
+### 函数（Functions）
 
 ```haskell
 square n = n^2
@@ -193,10 +188,10 @@ hypotenuse a b = sqrt (square a + square b)
 distance (a,b) (x,y) = hypotenuse (a-x) (b-y)
 ```
 
-Anonymous functions:
+匿名函数：
 
 ```haskell
-square = \\n -> n^2
+square = \\n -> n^2 -- fn n = n^2 \\n是传入的参数
 squares = map (\\n -> n^2) [1..100]
 ```
 
@@ -237,7 +232,7 @@ dot' =
 Historical note: this is borrowed from F#, inspired by Unix pipes,
 improving upon Haskell&rsquo;s `($)`.
 
-### Let Expressions
+### Let表达式（Let Expressions）
 
 ```haskell
 let n = 42
@@ -248,10 +243,9 @@ in
     square a + square b
 ```
 
-Let-expressions are indentation sensitive.
-Each definition should align with the one above it.
+Let表达式对缩进格式敏感。
 
-### Applying Functions
+### 函数调用（Applying Functions）
 
 ```haskell
 -- alias for appending lists and two lists
@@ -259,7 +253,7 @@ append xs ys = xs ++ ys
 xs = [1,2,3]
 ys = [4,5,6]
 
--- All of the following expressions are equivalent:
+-- 调用的写法有多种，下面这些都是等价的：
 a1 = append xs ys
 a2 = (++) xs ys
 
@@ -283,14 +277,14 @@ The basic arithmetic infix operators all figure out what type they should have a
 1 / 2     : Float
 ```
 
-There is a special function for creating tuples:
+有一个的特别的函数用来构造元组：
 
 ```haskell
 (,) 1 2              == (1,2)
 (,,,) 1 True 'a' []  == (1,True,'a',[])
 ```
 
-You can use as many commas as you want.
+逗号数量不限。
 
 ### Mapping
 
@@ -327,7 +321,7 @@ scene <~ fps 50 ~ sampleOn Mouse.clicks Mouse.position
 More info can be found [here](/blog/announce/0.7.elm#do-you-even-lift)
 and [here](http://package.elm-lang.org/packages/elm-lang/core/latest/Signal).
 
-### Modules
+### 模块（Modules）
 
 ```haskell
 module MyModule where
@@ -345,23 +339,22 @@ import Maybe ( Maybe(..) )     -- Maybe, Just, Nothing
 import Maybe ( Maybe(Just) )   -- Maybe, Just
 ```
 
-Qualified imports are preferred. Module names must match their file name,
-so module `Parser.Utils` needs to be in file `Parser/Utils.elm`.
+Qualified imports are preferred.模块的名字需要和文件名匹配（和JAVA一样），像`Parser.Utils`的模块名，必须放在`Parser/Utils.elm`里面。
 
-### Type Annotations
+### 类型声明（Type Annotations）
 
 ```haskell
-answer : Int
+answer : Int -- 声明一个整型变量
 answer = 42
 
-factorial : Int -> Int
+factorial : Int -> Int --声明一个函数，参数是整型，返回值是整型
 factorial n = product [1..n]
 
-addName : String -> a -> { a | name:String }
+addName : String -> a -> { a | name:String } --声明一个函数，参数是字符串、记录集，返回值是记录集
 addName name record = { record | name = name }
 ```
 
-### Type Aliases
+### 类型的别名（Type Aliases）
 
 ```haskell
 type alias Name = String
@@ -376,7 +369,7 @@ origin : Point
 origin = { x=0, y=0 }
 ```
 
-### JavaScript FFI
+### 与Javascript交互（JavaScript FFI）
 
 ```haskell
 -- incoming values
@@ -425,7 +418,7 @@ Experimental port handlers:
  * `stdout` logs to stdout in node.js and to console in browser
  * `stderr` logs to stderr in node.js and to console in browser
 
-### Things *not* in Elm
+### 尚未实现（Things *not* in Elm）
 
 Elm currently does not support:
 
