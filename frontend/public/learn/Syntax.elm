@@ -33,9 +33,9 @@ Elm的基本语法参考:
 - [共用体（Union Types）](#-union-types-)
 - [记录（Records）](#-records-)
 - [函数（Functions）](#-functions-)
-- [Infix Operators](#-infix-operators-)
-- [Let表达式（Let Expressions）](#-let-expressions-)
-- [Applying Functions](#-applying-functions-)
+- [管道操作（Infix Operators）](#-infix-operators-)
+- [Let表达式（Let Expressions）](#let-let-expressions-)
+- [函数调用（Applying Functions）](#-applying-functions-)
 - [Mapping with `(<~)` and `(~)`](#-mapping-)
 - [模块（Modules）](#-modules-)
 - [类型声明（Type Annotations）](#-type-annotations-)
@@ -43,8 +43,7 @@ Elm的基本语法参考:
 - [JavaScript FFI](#-javascript-ffi-)
 - [还*不*支持的东西](#-things-not-in-elm-)
 
-Check out the [learning resources](/Learn.elm) for
-tutorials and examples on actually *using* this syntax.
+[返回上一层菜单](/Learn.elm)查阅语法的具体应用资料。
 
 ### 注释（Comments）
 
@@ -147,7 +146,7 @@ List的类型是Empty和Node两者的其中之一，[具体请看详细解释](/
 
 ### 记录集（Records）
 
-有关Elm语言中记录集模块的详细介绍可以看[这篇概述][exp]，或[更新日志][v7]，或者[这篇学术论文][records].
+有关Elm语言中记录集模块的详细介绍可以看[这篇概述][exp]，或[更新日志][v7]，或者[这篇论文][records].
 
   [exp]: /learn/Records.elm "Records in Elm"
   [v7]:  /blog/announce/0.7.elm "Elm version 0.7"
@@ -195,14 +194,13 @@ square = \\n -> n^2 -- fn n = n^2 \\n是传入的参数
 squares = map (\\n -> n^2) [1..100]
 ```
 
-### Infix Operators
+### 管道操作（Infix Operators）
 
-You can create custom infix operators. The default
-[precedence](http://en.wikipedia.org/wiki/Order_of_operations)
-is 9 and the default
-[associativity](http://en.wikipedia.org/wiki/Operator_associativity)
-is left, but you can set your own.
-You cannot override the built-in operators though.
+可以创建自己的中缀操作符。默认的
+[优先级（precedence）](http://en.wikipedia.org/wiki/Order_of_operations)
+是 9，
+[结合顺序](http://en.wikipedia.org/wiki/Operator_associativity)
+是从右向左，但你可以改变设置。不能改变内置操作符的结合顺序。
 
 ```haskell
 f <| x = f x
@@ -210,14 +208,13 @@ f <| x = f x
 infixr 0 <|
 ```
 
-Use [`(<|)`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#<|)
-and [`(|>)`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#|>)
-to reduce parentheses usage. They are aliases for function
-application.
+使用 [`(<|)`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#<|)
+和 [`(|>)`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#|>)
+可以减少使用括号的频率，让代码读起来自然一些。实际执行是和函数调用一样的。
 
 ```haskell
-f <| x = f x
-x |> f = f x
+f <| x -- = f x
+x |> f -- = f x
 
 dot =
   scale 2 (move (20,20) (filled blue (circle 10)))
@@ -227,10 +224,11 @@ dot' =
     |> filled blue
     |> move (20,20)
     |> scale 2
+-- dot 和 dot'效果一样
 ```
 
-Historical note: this is borrowed from F#, inspired by Unix pipes,
-improving upon Haskell&rsquo;s `($)`.
+历史渊源：这个思路是从F#中借鉴的，Unix 中的管道操作将之发扬光大，
+Haskell&rsquo;s `($)`又做了改进。
 
 ### Let表达式（Let Expressions）
 
@@ -264,20 +262,19 @@ c1 = (append xs) ys
 c2 = ((++) xs) ys
 ```
 
-The basic arithmetic infix operators all figure out what type they should have automatically.
-
+下面这些例子可以展现在基础算数运算中运算结果的类型是怎么推断的：
 ```haskell
-23 + 19    : number
-2.0 + 1    : Float
+23 + 19    : number --数字
+2.0 + 1    : Float --小数
 
-6 * 7      : number
-10 * 4.2   : Float
+6 * 7      : number --数字
+10 * 4.2   : Float --小数
 
-100 // 2  : Int
-1 / 2     : Float
+100 // 2  : Int -- 整数
+1 / 2     : Float -- 浮点
 ```
 
-有一个的特别的函数用来构造元组：
+还有一个的特别的函数用来构造元组：
 
 ```haskell
 (,) 1 2              == (1,2)
@@ -286,24 +283,19 @@ The basic arithmetic infix operators all figure out what type they should have a
 
 逗号数量不限。
 
-### Mapping
+### 映射（Mapping）
 
-The `map` functions are used to apply a normal function like `sqrt` to a signal
-of values such as `Mouse.x`. So the expression `(map sqrt Mouse.x)` evaluates
-to a signal in which the current value is equal to the square root of the current
-x-coordinate of the mouse.
+`map` 函数用来将一个普通的函数（比如`sqrt`）映射到一个信号量（比如 `Mouse.x`）上。
+所以表达式： `(map sqrt Mouse.x)` 的运算结果是：当前鼠标位置x坐标值的平方。
 
-You can also use the functions `(<~)` and `(~)` to map over signals. The squiggly
-arrow is exactly the same as the `map` function, so the following expressions
-are the same:
+还可以使用符号 `(<~)` and `(~)`来代替写map。 to map over signals. `(<~)`就和`map` 函数行为一致：
 
 ```haskell
 map sqrt Mouse.x
 sqrt <~ Mouse.x
 ```
 
-You can think of it as saying &ldquo;send this signal through this
-function.&rdquo;
+可以读作：&ldquo;将信号量发送到这个函数执行，并返回一个结果。&rdquo;
 
 The `(~)` operator allows you to apply a signal of functions to a signal of
 values `(Signal (a -> b) -> Signal a -> Signal b)`. It can be used to put
@@ -384,7 +376,7 @@ port increment : Int -> Int
 port increment = \\n -> n + 1
 ```
 
-From JS, you talk to these ports like this:
+在JS里面你可以这样调用Elm中的port：
 
 ```javascript
 var example = Elm.worker(Elm.Example, {
@@ -401,20 +393,19 @@ example.ports.time.unsubscribe(callback);
 example.ports.increment(41) === 42;
 ```
 
-More example uses can be found
-[here](https://github.com/evancz/elm-html-and-js)
-and [here](https://gist.github.com/evancz/8521339).
+更多示例可以
+[看这儿](https://github.com/evancz/elm-html-and-js)
+或[这儿](https://gist.github.com/evancz/8521339).
 
-Elm has some built-in port handlers that automatically take some
-imperative action:
+Elm 中有几个内置port会直接作用于浏览器：
 
- * [`title`](/edit/examples/Reactive/Title.elm) sets the page title, ignoring empty strings
- * [`log`](/edit/examples/Reactive/Log.elm) logs messages to the developer console
- * [`redirect`](/edit/examples/Reactive/Redirect.elm) redirects to a different page, ignoring empty strings
+ * [`title`](/edit/examples/Reactive/Title.elm) 设置网页标题，空白字符串无效。
+ * [`log`](/edit/examples/Reactive/Log.elm) 想控制台输出日志
+ * [`redirect`](/edit/examples/Reactive/Redirect.elm) 跳转网页，空白字符串无效
 
-Experimental port handlers:
+试验中的port还有：
 
- * `favicon` sets the pages favicon
+ * `favicon` 设置网页的favicon
  * `stdout` logs to stdout in node.js and to console in browser
  * `stderr` logs to stderr in node.js and to console in browser
 
