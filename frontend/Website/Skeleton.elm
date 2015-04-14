@@ -30,7 +30,7 @@ footerWords =
   in
      Text.color (Color.rgb 145 145 145) <|
        wordLink "使用 Elm 编写生成，并且" "https://github.com/elm-lang/elm-lang.org" "开源" "。" ++
-       wordLink "简体中文由 Alex Lei 翻译，" "https://github.com/elm-lang/elm-lang.org" "并且在此" "。" ++
+       wordLink "简体中文由 Alex Lei 翻译，" "https://github.com/devitcn/elm-lang.org" "并且在此" "。" ++
        wordLink "版权所有 " "https://github.com/evancz" "Evan Czaplicki" " &copy;2011-14"
 
 heading localName outer =
