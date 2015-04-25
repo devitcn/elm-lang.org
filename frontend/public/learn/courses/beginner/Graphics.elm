@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 
@@ -11,7 +10,7 @@ port title = "介绍绘图"
 
 main : Signal Element
 main =
-  skeleton "开始学习" everything <~ Window.dimensions
+  Signal.map (skeleton "开始学习" everything) Window.dimensions
 
 
 everything : Int -> Element
@@ -206,7 +205,7 @@ this easier to read.
 
 ### Forms and Functions
 
-Whenever your code starts to look ugly or repetative, it is likely
+Whenever your code starts to look ugly or repetitive, it is likely
 that you need to create a function to help out. In the example above
 we can make a function for creating squares.
 

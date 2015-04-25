@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 port title : String
@@ -9,7 +8,7 @@ port title = "介绍列表（Lists）和记录（Records）"
 
 main : Signal Element
 main =
-  skeleton "开始学习" everything <~ Window.dimensions
+  Signal.map (skeleton "开始学习" everything) Window.dimensions
 
 
 everything : Int -> Element
@@ -52,7 +51,7 @@ you are about to learn how to work with lists and records.
 The following video and [practice problems](#practice-problems)
 are designed to help you dive into lists and records.
 
-The video is followed by some exercises. You can use the [online editor](http://elm-lang.org/try)
+The video is followed by some exercises. You can use the [online editor](http://elm-lang.org/try) 
 to follow along and start experimenting on your own.
 """
 

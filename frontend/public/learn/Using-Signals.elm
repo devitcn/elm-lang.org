@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 port title : String
@@ -10,7 +9,7 @@ port title = "信号的用法"
 
 main : Signal Element
 main =
-  skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
+  Signal.map (skeleton "开始学习" (\w -> width (min 600 w) content)) Window.dimensions
 
 
 content : Element

@@ -1,13 +1,10 @@
-import Graphics.Element (..)
-import List
-import List ((::))
+import Graphics.Element exposing (..)
 import Markdown
-import Signal
 import Text
-import Website.Skeleton (skeleton)
-import Website.ColorScheme (accent4)
+import Website.Skeleton exposing (skeleton)
+import Website.ColorScheme exposing (accent4)
 import Website.Tiles as Tile
-import Website.Widgets (headerFaces)
+import Website.Widgets exposing (headerFaces)
 import Window
 
 
@@ -25,6 +22,7 @@ body outer =
   in
     container outer (heightOf b) middle b
 
+
 content =
   let w = 600
       exs = [ ("显示类",elements), ("交互类",reactive), ("算法类",functional) ]
@@ -35,6 +33,7 @@ content =
       , Tile.examples w intermediates
       , width w projects
       ]
+
 
 words = Markdown.toElement """
 
@@ -103,50 +102,61 @@ intermediates =
         [ ex [ "Mario", "Walk", "Pong", "Turtle" ]
         , ex [ "TextReverse", "Calculator", "Form", "Flickr" ]
         , ex [ "Clock", "Plot", "SlideShow", "PieChart" ]
-        , gl [ "Triangle", "Cube", "Thwomp", "FirstPerson" ]
+--        , gl [ "Triangle", "Cube", "Thwomp", "FirstPerson" ]
         , ex [ "Physics", "Stamps" ]
         ]
+
 
 addFolder folder lst =
   let add (x,y) = (x, folder ++ y ++ ".elm")
       f (n,xs) = (n, List.map add xs)
   in  List.map f lst
 
+
 elements = addFolder "Elements/"
   [ ("文本",
-        [ ("HelloWorld", "HelloWorld")
-        , ("Markdown", "Markdown")
-        ])
+      [ ("HelloWorld", "HelloWorld")
+      , ("Markdown", "Markdown")
+      ]
+    )
   , ("图片",
-        [ ("Images", "Image")
-        , ("Fitted", "FittedImage")
-        , ("Cropped", "CroppedImage")
-        ])
+      [ ("Images", "Image")
+      , ("Fitted", "FittedImage")
+      , ("Cropped", "CroppedImage")
+      ]
+    )
   , ("样式",
-        [ ("Size"    , "Size")
-        , ("Opacity" , "Opacity")
-        , ("字形"    , "Text")
-        , ("字体", "Typeface")
-        ])
+      [ ("Size"    , "Size")
+      , ("Opacity" , "Opacity")
+      , ("字形"    , "Text")
+      , ("字体", "Typeface")
+      ]
+    )
   , ("布局",
-        [ ("流布局", "FlowDown1a")
-        , ("流布局2"  , "FlowDown2")
-        , ("层叠"     , "Layers")
-        ])
+      [ ("流布局", "FlowDown1a")
+      , ("流布局2"  , "FlowDown2")
+      , ("层叠"     , "Layers")
+      ]
+    )
   , ("定位",
-        [ ("Containers", "Position")
-        , ("Spacers"   , "Spacer")
-        ])
-  , ("2D图形", [ ("Lines"     , "Lines")
-                  , ("Shapes"    , "Shapes")
-                  , ("Elements"  , "ToForm")
-                  , ("Transforms", "Transforms")
-                  ])
-  , ("2D填充 ", [ ("纯色"    , "Color")
-                 , ("线性渐变", "LinearGradient")
-                 , ("辐射渐变", "RadialGradient")
-                 , ("材质"  , "Texture")
-                 ])
+      [ ("Containers", "Position")
+      , ("Spacers"   , "Spacer")
+      ]
+    )
+  , ("2D图形",
+      [ ("Lines"     , "Lines")
+      , ("Shapes"    , "Shapes")
+      , ("Elements"  , "ToForm")
+      , ("Transforms", "Transforms")
+      ]
+    )
+  , ("2D填充 ",
+      [ ("纯色"    , "Color")
+      , ("线性渐变", "LinearGradient")
+      , ("辐射渐变", "RadialGradient")
+      , ("材质"  , "Texture")
+      ]
+    )
   ]
 
 
@@ -156,78 +166,102 @@ functional = addFolder "Functional/"
       , ("求数组长度", "Length")
       , ("合并数组"        , "Zip")
       , ("快速排序" , "QuickSort")
-      ])
+      ]
+    )
   , ("函数类",
       [ ("函数定义"  , "Anonymous")
       , ("简写", "Application")
       , ("函数组合", "Composition")
       , ("Infix Ops"  , "Infix")
-      ])
+      ]
+    )
   , ("高阶",
       [ ("Map"    , "Map")
       , ("Fold"   , "Sum")
       , ("Filter" , "Filter")
-      ])
+      ]
+    )
   , ("共用体",
       [ ("Maybe", "Maybe")
       , ("Boolean Expressions", "BooleanExpressions")
       , ("Tree", "Tree")
-      ])
+      ]
+    )
   , ("Libraries",
-        [ ("Dict", "Dict")
-        , ("Set", "Set")
-        ])
+      [ ("Dict", "Dict")
+      , ("Set", "Set")
+      ]
+    )
   ]
 
 reactive = addFolder "Reactive/"
-  [ ("鼠标事件",  [ ("位置", "Position")
-               , ("按下事件"    , "IsDown")
-               , ("点击事件"    , "CountClicks")
-               , ("缩放", "ResizeYogi")
-               , ("跟随", "Transforms")
-               ])
-  ,("键盘事件",[ ("光标键"     , "Arrows")
-               , ("wasd"       , "Wasd")
-               , ("按下事件"  , "KeysDown")
-               , ("点击事件", "CharPressed")
-               ])
-  , ("触摸屏",  [ ("Raw", "Touches")
-               , ("Touches", "Touch")
-               , ("Taps", "Taps")
-               , ("Draw", "Draw")
-               ])
-  , ("窗体", [ ("改变尺寸", "ResizePaint")
-               , ("文字居中", "Centering")
-               ])
-  , ("时间线",   [ ("FPS"     , "Fps")
-               , ("FPS when", "FpsWhen")
-               , ("Every"   , "Every")
-               ])
-  , ("输入控件",  [ ("文本框", "TextField")
-               , ("密码框"  , "Password")
-               , ("复选框", "CheckBox")
-               , ("下拉框", "DropDown")
-               ])
+  [ ("鼠标事件",
+      [ ("位置", "Position")
+      , ("按下事件"    , "IsDown")
+      , ("点击事件"    , "CountClicks")
+      , ("缩放", "ResizeYogi")
+      , ("跟随", "Transforms")
+      ]
+    )
+  , ("键盘事件",
+      [ ("光标键"     , "Arrows")
+      , ("wasd"       , "Wasd")
+      , ("按下事件"  , "KeysDown")
+      , ("点击事件", "CharPressed")
+      ]
+    )
+  , ("触摸屏",
+      [ ("Raw", "Touches")
+      , ("Touches", "Touch")
+      , ("Taps", "Taps")
+      , ("Draw", "Draw")
+      ]
+    )
+  , ("窗体", 
+      [ ("改变尺寸", "ResizePaint")
+      , ("文字居中", "Centering")
+      ]
+    )
+  , ("时间线",
+      [ ("FPS"     , "Fps")
+      , ("FPS when", "FpsWhen")
+      , ("Every"   , "Every")
+      ]
+    )
+  , ("输入控件",
+      [ ("文本框", "TextField")
+      , ("密码框"  , "Password")
+      , ("复选框", "CheckBox")
+      , ("下拉框", "DropDown")
+      ]
+    )
 --  , ("Random", [ ("Randomize", "Randomize") ])
 --  , ("Http",   [ ("Zip Codes", "ZipCodes") ])
-  , ("过滤",[ ("Sample", "SampleOn")
-               , ("只能输入数字", "KeepIf")
-               ])
-  , ("端口",  [ ("Logging","Log")
-               , ("设置标题","Title")
-               , ("重定向","Redirect")
-               ])
+  , ("过滤",
+      [ ("Sample", "SampleOn")
+      , ("只能输入数字", "KeepIf")
+      ]
+    )
+  , ("端口",
+      [ ("设置标题","Title")
+      , ("重定向","Redirect")
+      ]
+    )
   ]
 
-example (name, loc) = Text.link ("/edit/examples/" ++ loc) (Text.fromString name)
+
+example (name, loc) =
+  Text.link ("/edit/examples/" ++ loc) (Text.fromString name)
+
+
 toLinks (title, links) =
   flow right
-   [ width 150 (Text.plainText <| "    " ++ title)
-   , Text.leftAligned << Text.join (Text.fromString ", ") <| List.map example links
+   [ width 150 (leftAligned (Text.fromString ("    " ++ title)))
+   , leftAligned << Text.join (Text.fromString ", ") <| List.map example links
    ]
 
 subsection w (name,info) =
   flow down << List.intersperse (spacer w 6) << List.map (width w) <|
-    (tag name << Text.leftAligned << Text.typeface headerFaces << Text.bold <| Text.fromString name) ::
+    (tag name << leftAligned << Text.typeface headerFaces << Text.bold <| Text.fromString name) ::
     spacer 0 0 ::
     List.map toLinks info ++ [spacer w 12]

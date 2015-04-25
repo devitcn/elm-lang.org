@@ -1,13 +1,10 @@
 module Website.Skeleton where
 
 import Color
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Graphics.Input as Input
-import List
-import Native.RedirectHack
-import Signal
 import Text
-import Website.Widgets (headerFaces, logoImage)
+import Website.Widgets exposing (headerFaces, logoImage)
 import Website.ColorScheme as C
 
 
@@ -21,7 +18,7 @@ skeleton localName bodyFunc (w,h) =
        , container w bodyHeight midTop body
        , spacer w 80
        , color C.mediumGrey (spacer w 1)
-       , color C.lightGrey <| container w 50 middle <| Text.centered footerWords
+       , color C.lightGrey <| container w 50 middle <| centered footerWords
        ]
 
 footerWords =
@@ -31,7 +28,7 @@ footerWords =
      Text.color (Color.rgb 145 145 145) <|
        wordLink "使用 Elm 编写生成，并且" "https://github.com/elm-lang/elm-lang.org" "开源" "。" ++
        wordLink "简体中文由 Alex Lei 翻译，" "https://github.com/devitcn/elm-lang.org" "并且在此" "。" ++
-       wordLink "版权所有 " "https://github.com/evancz" "Evan Czaplicki" " &copy;2011-14"
+       wordLink "版权所有 " "https://github.com/evancz" "Evan Czaplicki" " &copy;2011-2015"
 
 heading localName outer =
   let inner = min 800 outer
@@ -62,7 +59,7 @@ logo =
                 Text.fromString "elm"
                   |> Text.height 24
                   |> Text.color clr
-                  |> Text.leftAligned
+                  |> leftAligned
           in
             color C.lightGrey <|
             flow right
@@ -71,12 +68,7 @@ logo =
               , container (widthOf name) 30 middle name
               ]
     in
-        link "/" <|
-        Input.customButton
-            (Signal.send clicks "/")
-            (btn Color.charcoal)
-            (btn Color.black)
-            (btn Color.black)
+        link "/" <| btn Color.charcoal
 
 
 tabs localName =
@@ -92,14 +84,6 @@ paths =
   , ("下载安装"  , "/Install.elm")
   ]
 
-clicks : Signal.Channel String
-clicks =
-  Signal.channel ""
-
-
-bad =
-  Signal.map Native.RedirectHack.redirect (Signal.subscribe clicks)
-
 
 tab localName (name, href) =
   let (accent, h) =
@@ -109,16 +93,11 @@ tab localName (name, href) =
           let words =
                 Text.fromString name
                   |> Text.color clr
-                  |> Text.leftAligned
+                  |> leftAligned
           in
             flow down
               [ color C.lightGrey <| container (widthOf words + 20) 40 middle words
               , color accent (spacer (widthOf words + 20) h)
               ]
   in
-    link href <|
-      Input.customButton
-          (Signal.send clicks href)
-          (btn Color.charcoal)
-          (btn Color.black)
-          (btn Color.black)
+    link href <| btn Color.charcoal

@@ -1,5 +1,5 @@
-import Graphics.Element (Element, flow, down)
-import Text (..)
+import Graphics.Element exposing (Element, flow, down, leftAligned)
+import Text exposing (bold, italic, link, fromString)
 
 main : Element
 main =
@@ -10,4 +10,4 @@ main =
     ]
 
 -- Challenge: can you rewrite this example so the code is less
--- repetative? Try using map to factor out common patterns.
+-- repetitive? Try using map to factor out common patterns.

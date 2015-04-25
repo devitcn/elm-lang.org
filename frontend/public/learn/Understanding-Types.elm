@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 
@@ -11,7 +10,7 @@ port title = "理解不同的的类型"
 
 main : Signal Element
 main =
-  skeleton "开始学习" content <~ Window.dimensions
+  Signal.map (skeleton "开始学习" content) Window.dimensions
 
 
 content : Int -> Element
@@ -112,7 +111,7 @@ book = ("Demian","Hesse",176)
 ```
 
 This illustrates that you can hold many different values, each with a different
-type. When the data structure becomes more complicated or specific,
+type. When the data structure becomes more complicated or specific, 
 it is often best to use records instead tuples.
 
 ### 记录（Records）

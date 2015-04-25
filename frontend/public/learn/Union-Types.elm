@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 
@@ -10,7 +9,7 @@ port title = "共用体（Union Types）"
 
 
 main : Signal Element
-main = skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
+main = Signal.map (skeleton "开始学习" (\w -> width (min 600 w) content)) Window.dimensions
 
 
 content : Element
@@ -214,7 +213,7 @@ exception again!
 
 If you have ever implemented a [linked list](https://en.wikipedia.org/wiki/Linked_list)
 in C or Java you will appreciate how easy this is in Elm.
-The following algebraic data type represents a list. The front of a list
+The following union type represents a list. The front of a list
 can only be one of two things: empty or something followed by a list.
 We can turn this informal definition into a union type:
 

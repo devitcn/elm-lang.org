@@ -1,8 +1,7 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
 
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 port title : String
@@ -11,7 +10,7 @@ port title = "Making Pong"
 
 main : Signal Element
 main =
-  skeleton "Blog" (\w -> width (min 600 w) content) <~ Window.dimensions
+  Signal.map (skeleton "Blog" (\w -> width (min 600 w) content)) Window.dimensions
 
 
 content = Markdown.toElement """
@@ -82,7 +81,7 @@ skeleton for game creation][skeleton] which can both be a starting point for
 playing around with your own ideas.
 
  [src]: /edit/examples/Intermediate/Pong.elm
- [skeleton]: https://github.com/elm-lang/elm-lang.org/blob/master/public/examples/Intermediate/GameSkeleton.elm
+ [skeleton]: https://github.com/elm-lang/elm-lang.org/blob/master/frontend/public/examples/Intermediate/GameSkeleton.elm
 
 Let&rsquo;s get into the code!
 
@@ -122,8 +121,8 @@ all inputs.
 ```haskell
 input : Signal Input
 input = sampleOn delta <| Input <~ Keyboard.space
-                                 ~ lift .y Keyboard.wasd
-                                 ~ lift .y Keyboard.arrows
+                                 ~ Signal.map .y Keyboard.wasd
+                                 ~ Signal.map .y Keyboard.arrows
                                  ~ delta
 ```
 
@@ -147,7 +146,7 @@ about this!
 The most basic thing we need to model is the &ldquo;pong court&rdquo;. This
 just comes down to the dimensions of the court to know when the ball should
 bounce and where the paddles should stop. We will also define halfway points
-which are commonly used. 
+which are commonly used.
 
 ```haskell
 (gameWidth,gameHeight) = (600,400)
@@ -318,7 +317,7 @@ displaying scores and instructions nicely.
 -- helper values
 pongGreen = rgb 60 100 60
 textGreen = rgb 160 200 160
-txt f = leftAligned << f << monospace << Text.color textGreen << toText
+txt f = leftAligned << f << monospace << Text.color textGreen << fromString
 msg = "SPACE to start, WS and &uarr;&darr; to move"
 
 -- shared function for rendering objects
@@ -331,8 +330,8 @@ display : (Int,Int) -> Game -> Element
 display (w,h) {state,ball,player1,player2} =
   let scores : Element
       scores = txt (Text.height 50) <|
-               show player1.score ++ "  " ++ show player2.score
-  in 
+               toString player1.score ++ "  " ++ toString player2.score
+  in
       container w h middle <|
       collage gameWidth gameHeight
        [ filled pongGreen   (rect gameWidth gameHeight)
@@ -350,7 +349,7 @@ Now that we have a way to display a particular game state, we just
 apply it to our `gameState` that changes over time.
 
 ```haskell
-main = lift2 display Window.dimensions gameState
+main = Signal.map2 display Window.dimensions gameState
 ```
 
 And that is it, [Pong in Elm](/edit/examples/Intermediate/Pong.elm)!

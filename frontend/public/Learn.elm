@@ -1,10 +1,9 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
-main = skeleton "开始学习" content <~ Window.dimensions
+main = Signal.map (skeleton "开始学习" content) Window.dimensions
 
 content outer =
   let w = 600
@@ -24,12 +23,6 @@ info = Markdown.toElement """
 喜欢先从例子开始学习的人可以移步[代码样例](/Examples.elm)来逐步的学习。
 这个页面提供一些系统的有深度的文档。
 
-### 初学者课程
-
-* [介绍用Elm编程](/learn/courses/beginner/Programming.elm) &mdash; 只有一点编程知识的人从这里看起。
-* [介绍绘制图形](/learn/courses/beginner/Graphics.elm) &mdash; 用Elm画图
-* [介绍 List 和 Record](/learn/courses/beginner/Lists-and-Records.elm) &mdash; Elm中比较常用的两个数据类型和其概念
-
 ### 基本资源
 
 * [语法参考](/learn/Syntax.elm) &mdash; 全面的介绍ELm的语法
@@ -45,8 +38,17 @@ info = Markdown.toElement """
 
 * [关键概念](/learn/What-is-FRP.elm) &mdash; 信号的核心概念
 * [使用信号](/learn/Using-Signals.elm) &mdash; 常见用法和坑
-* [输入](/learn/Interactive-UI-Elements.elm) &mdash; 与表单控件交互
-* [设计复杂程序](/learn/Architecture.elm) &mdash; 在复杂程序中用好信号
+
+### Architecture
+
+* [The Elm Architecture](https://github.com/evancz/elm-architecture-tutorial#the-elm-architecture)
+  &mdash; a simple pattern that scales extrodinarily well and is easy to
+  understand, test, and maintain. Use it!
+
+
+### Tasks
+
+* [Tasks Tutorial](/learn/Tasks.elm) &mdash; foundation for HTTP and other effects
 
 ### 互操作（Interop）
 
@@ -60,19 +62,35 @@ info = Markdown.toElement """
 * [Website skeleton](https://github.com/evancz/elm-todomvc/blob/master/Todo.elm) &mdash; template for making websites with [elm-html][]
 * [Game skeleton](https://github.com/elm-lang/elm-lang.org/blob/master/frontend/public/examples/Intermediate/GameSkeleton.elm) &mdash; template for making games, though many things fit this pattern
 * [Making Pong](/blog/Pong.elm) &mdash; a full walkthrough of how to create Pong
-* [Library Design Guidelines](http://package.elm-lang.org/help/design-guidelines) &mdash; creating pleasant and consistent libraries in Elm
+* [Design Guidelines](http://package.elm-lang.org/help/design-guidelines) &mdash; creating pleasant and consistent packages in Elm
 * [Writing Docs](http://package.elm-lang.org/help/documentation-format) &mdash; an important thing to do!
 
 [elm-html]: /blog/Blazing-Fast-Html.elm
 
-### 线上杂志
+### 初学者课程
 
-* [Concurrent FRP for GUIs][thesis] &mdash; very accessible history of FRP and overview of Elm
-* [Asynchronous FRP for GUIs][pldi] &mdash; formal semantics of Elm from PLDI 2013
+* [介绍用Elm编程](/learn/courses/beginner/Programming.elm) &mdash; 只有一点编程知识的人从这里看起。
+* [介绍绘制图形](/learn/courses/beginner/Graphics.elm) &mdash; 用Elm画图
+* [介绍 List 和 Record](/learn/courses/beginner/Lists-and-Records.elm) &mdash; Elm中比较常用的两个数据类型和其概念
+
+
+### Advanced Info on FRP
+
+* [Controlling Time and Space][ctas] &mdash; presentation describing the many
+  formulations of FRP: how they work, their goals, their strengths and
+  weaknesses, and how they relate to each other. This is very helpful if you
+  are curious about the differences between Elm, reactive libraries for JS, etc.
+
+* [Concurrent FRP for GUIs][thesis] &mdash; A very accessible history of FRP and
+  overview of how signals work in Elm.
+
+* [Asynchronous FRP for GUIs][pldi] &mdash; The formal semantics of Elm from
+  PLDI 2013. This overlaps quite a bit with Concurrent FRP for GUIs but is more
+  focused and dryer in tone.
 
  [thesis]: /papers/concurrent-frp.pdf "thesis"
  [pldi]: http://people.seas.harvard.edu/~chong/abstracts/CzaplickiC13.html "PLDI 2013 paper"
-
+ [ctas]: https://www.youtube.com/watch?v=Agu6jipKfYw
 """
 
 

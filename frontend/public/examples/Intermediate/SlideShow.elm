@@ -1,10 +1,8 @@
-import Color (..)
-import Graphics.Collage (..)
-import Graphics.Element (..)
-import List (..)
+import Color exposing (..)
+import Graphics.Collage exposing (..)
+import Graphics.Element exposing (..)
 import Mouse
-import Signal
-import Time (..)
+import Time exposing (..)
 import Window
 
 
@@ -25,7 +23,11 @@ images =
 
 currentImage : Signal String
 currentImage =
-  let cycler _ imgs = tail imgs ++ [head imgs]
+  let cycler _ (head::tail) =
+        tail ++ [head]
+
+      head list =
+        Maybe.withDefault "/book.jpg" (List.head list)
   in
       Signal.map head (Signal.foldp cycler images (every (2*second)))
 

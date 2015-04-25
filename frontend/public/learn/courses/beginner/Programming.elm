@@ -1,8 +1,6 @@
-import Graphics.Element (..)
-import List
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 port title : String
@@ -11,7 +9,7 @@ port title = "Elm Hello World"
 
 main : Signal Element
 main =
-  skeleton "开始学习" everything <~ Window.dimensions
+  Signal.map (skeleton "开始学习" everything) Window.dimensions
 
 
 everything : Int -> Element

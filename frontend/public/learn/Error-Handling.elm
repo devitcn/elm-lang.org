@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 port title : String
@@ -10,7 +9,7 @@ port title = "处理错误"
 
 main : Signal Element
 main =
-  skeleton "开始学习" (\w -> width (min 600 w) content) <~ Window.dimensions
+  Signal.map (skeleton "开始学习" (\w -> width (min 600 w) content)) Window.dimensions
 
 
 content : Element
@@ -26,6 +25,6 @@ that make error handling nice as things get more complicated.
 
 ## A Function that may Fail
 
-Say we would like to do
+Say we would like to do 
 
 """

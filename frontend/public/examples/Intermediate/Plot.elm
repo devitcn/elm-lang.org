@@ -1,34 +1,35 @@
-import Color (..)
-import Graphics.Collage (..)
-import Graphics.Element (..)
+import Color exposing (..)
+import Graphics.Collage exposing (..)
+import Graphics.Element exposing (..)
 import Graphics.Input as Input
-import List (..)
-import Signal
-import Text (..)
+import List exposing (map, map2, unzip)
 
 
 ----  Put it all on screen  ----
 
-style : Signal.Channel Style
+style : Signal.Mailbox Style
 style =
-  Signal.channel Line
+  Signal.mailbox Line
 
-points : Signal.Channel (List (Float,Float))
+
+points : Signal.Mailbox (List (Float,Float))
 points =
-  Signal.channel (snd (head pointOptions))
+  Signal.mailbox lissajous
+
 
 main : Signal Element
 main =
-  Signal.map2 view (Signal.subscribe style) (Signal.subscribe points)
+  Signal.map2 view style.signal points.signal
+
 
 view : Style -> List (Float,Float) -> Element
 view currentStyle currentPoints =
   flow down
     [ plot currentStyle 400 400 currentPoints
     , flow right
-        [ plainText "Options: "
-        , Input.dropDown (Signal.send points) pointOptions
-        , Input.dropDown (Signal.send style) styleOptions
+        [ show "Options: "
+        , Input.dropDown (Signal.message points.address) pointOptions
+        , Input.dropDown (Signal.message style.address) styleOptions
         ]
     ]
 
@@ -36,6 +37,7 @@ view currentStyle currentPoints =
 ----  Graph Styles  ----
 
 type Style = Points | Line
+
 
 styleOptions : List (String, Style)
 styleOptions =
@@ -46,14 +48,18 @@ styleOptions =
 
 ----  Many graphs for display  ----
 
-lissajous : Float -> Float -> Float -> (Float,Float)
-lissajous m n t =
-  (cos (m*t), sin (n*t))
+lissajous : List (Float,Float)
+lissajous =
+  let point m n t =
+        (cos (m*t), sin (n*t))
+  in
+      map (point 3 2) piRange
+
 
 pointOptions : List (String, List (Float,Float))
 pointOptions =
   [ ("r = cos(4t)", polarGraph (\t -> cos (4*t)) piRange)
-  , ("Lissajous"  , map (lissajous 3 2) piRange)
+  , ("Lissajous"  , lissajous)
   , ("Circle"     , map (\t -> (cos t, sin t)) piRange)
   , ("x^2"        , graph (\x -> x*x) range)
   , ("x^2 + x - 9", graph (\x -> x*x + x - 9) offRange)
@@ -63,21 +69,26 @@ pointOptions =
   , ("Scattered"  , graph (\x -> x + tan x) range)
   ]
 
+
 range : List Float
 range =
   map toFloat [ -10 .. 10 ]
+
 
 piRange : List Float
 piRange =
   map (\x -> toFloat x / 40 * pi) [-40..40]
 
+
 offRange : List Float
 offRange =
   map (\x -> toFloat x / 5) [-20..10]
 
+
 graph : (Float -> Float) -> List Float -> List (Float,Float)
 graph f range =
   map2 (,) range (map f range)
+
 
 polarGraph : (Float -> Float) -> List Float -> List (Float,Float)
 polarGraph f thetas =
@@ -108,3 +119,12 @@ plot style w h points =
           |> move (-200,-200)
       ]
 
+
+minimum : List Float -> Float
+minimum numbers =
+  Maybe.withDefault 0 (List.minimum numbers)
+
+
+maximum : List Float -> Float
+maximum numbers =
+  Maybe.withDefault 0 (List.maximum numbers)

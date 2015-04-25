@@ -1,8 +1,7 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Widgets (button)
-import Website.Skeleton (skeleton)
+import Website.Widgets exposing (button)
+import Website.Skeleton exposing (skeleton)
 import Website.BigTiles as Tile
 import Website.ColorScheme as C
 
@@ -12,7 +11,7 @@ import Window
 port title : String
 port title = "下载安装"
 
-main = skeleton "下载安装" content <~ Window.dimensions
+main = Signal.map (skeleton "下载安装" content) Window.dimensions
 
 content outer =
     let center elem =
@@ -22,8 +21,8 @@ content outer =
         [ center (width (min 600 outer) header)
         , center <|
               flow right
-              [ button 220 180 "http://install.elm-lang.org/Elm-Platform-0.14.1.pkg" "Mac"
-              , button 220 180 "http://install.elm-lang.org/Elm-Platform-0.14.1.exe" "Windows"
+              [ button 220 180 "http://install.elm-lang.org/Elm-Platform-0.15.pkg" "Mac"
+              , button 220 180 "http://install.elm-lang.org/Elm-Platform-0.15.exe" "Windows"
               ]
         , center (width (min 600 outer) rest)
         ]
@@ -72,8 +71,8 @@ rest = Markdown.toElement """
 ```bash
 cabal update
 cabal install cabal-install
-cabal install -j elm-compiler-0.14.1 elm-package-0.4 elm-make-0.1.1
-cabal install -j elm-repl-0.4 elm-reactor-0.3
+cabal install -j elm-compiler-0.15 elm-package-0.5 elm-make-0.1.1
+cabal install -j elm-repl-0.4.1 elm-reactor-0.3.1
 ```
 
 需要花点时间来编译程序，完成后就添加到了PATH变量中了。要是没有的话可能会在这个地方：`~/.cabal/bin`，[然后手工填加一下到PATH][add-path].

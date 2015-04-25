@@ -2,15 +2,17 @@
 -- Focus on the display screen (i.e. click the right half of this window)
 -- and start pressing keys!
 
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Keyboard
-import Signal
-import Text (..)
+import Set
 
 
-display : List Int -> Element
+display : Set.Set Int -> Element
 display keyCodes =
-  plainText "You are holding down the following keys: " `beside` asText keyCodes
+  flow right
+    [ show "You are holding down the following keys: "
+    , show (Set.toList keyCodes)
+    ]
 
 
 main : Signal.Signal Element

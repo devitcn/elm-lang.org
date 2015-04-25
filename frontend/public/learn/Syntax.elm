@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Window
 
 
@@ -11,7 +10,7 @@ port title = "Elm语法参考"
 
 main : Signal Element
 main =
-  skeleton "开始学习" content <~ Window.dimensions
+  Signal.map (skeleton "开始学习" content) Window.dimensions
 
 
 content : Int -> Element
@@ -213,8 +212,8 @@ infixr 0 <|
 可以减少使用括号的频率，让代码读起来自然一些。实际执行是和函数调用一样的。
 
 ```haskell
-f <| x -- = f x
-x |> f -- = f x
+f <| x = f x
+x |> f = f x
 
 dot =
   scale 2 (move (20,20) (filled blue (circle 10)))
@@ -323,12 +322,12 @@ import List                    -- List.map, List.foldl
 import List as L               -- L.map, L.foldl
 
 -- open imports
-import List (..)               -- map, foldl, concat, ...
-import List ( map, foldl )     -- map, foldl
+import List exposing (..)               -- map, foldl, concat, ...
+import List exposing ( map, foldl )     -- map, foldl
 
-import Maybe ( Maybe )         -- Maybe
-import Maybe ( Maybe(..) )     -- Maybe, Just, Nothing
-import Maybe ( Maybe(Just) )   -- Maybe, Just
+import Maybe exposing ( Maybe )         -- Maybe
+import Maybe exposing ( Maybe(..) )     -- Maybe, Just, Nothing
+import Maybe exposing ( Maybe(Just) )   -- Maybe, Just
 ```
 
 Qualified imports are preferred.模块的名字需要和文件名匹配（和JAVA一样），像`Parser.Utils`的模块名，必须放在`Parser/Utils.elm`里面。

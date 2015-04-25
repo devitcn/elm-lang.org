@@ -1,7 +1,6 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (..)
 import Markdown
-import Signal (Signal, (<~))
-import Website.Skeleton (skeleton)
+import Website.Skeleton exposing (skeleton)
 import Website.ColorScheme
 import Window
 
@@ -11,7 +10,7 @@ port title = "将ELm程序嵌入到网页中"
 
 main : Signal Element
 main =
-  skeleton "开始学习" (\w -> width (min 600 w) intro) <~ Window.dimensions
+  Signal.map (skeleton "开始学习" (\w -> width (min 600 w) intro)) Window.dimensions
 
 
 intro : Element
@@ -49,7 +48,7 @@ Elm.embed(Elm.Stamper, div);
 The `Elm.embed` function takes two arguments:
 
   1. An Elm module. All modules are prefixed with `Elm` in JavaScript to avoid
-     namespace pollution, so our `Stamper` module becomes `Elm.Stamper`.
+     namespace pollution, so our `Stamper` module becomes `Elm.Stamper`. 
   2. A `<div>` to embed the program in.
 
 That's it!

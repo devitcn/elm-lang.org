@@ -1,9 +1,7 @@
-import Graphics.Element (..)
+import Graphics.Element exposing (Element, show)
 import Keyboard
-import Signal (Signal, map)
-import Text (asText)
 
 
 main : Signal Element
 main =
-  map asText Keyboard.wasd
+  Signal.map show Keyboard.wasd
