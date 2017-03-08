@@ -103,5 +103,5 @@ googleAnalytics =
         \m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n\
         \})(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\
         \\n\
-        \ga('create', 'UA-25827182-1', 'auto');\n\
+        \ga('create', 'UA-93242931-1', 'auto');\n\
         \ga('send', 'pageview');\n"

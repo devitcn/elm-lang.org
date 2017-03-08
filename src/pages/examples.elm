@@ -21,11 +21,11 @@ main =
 
 content = """
 
-# Examples
+# 例子
 
-Playing with small examples is a great way to get comfortable with Elm!
-Think of them as a supplement to resources like the [syntax reference][syntax]
-and [guide.elm-lang.org][guide].
+这些例子比较简单，帮助你快速入门Elm语言。
+熟悉之后可以来看 [入门指南][guide]
+和 [语法参考][syntax] 。
 
 [guide]: https://guide.elm-lang.org/
 [syntax]: /docs/syntax

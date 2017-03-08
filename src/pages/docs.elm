@@ -16,29 +16,29 @@ main =
 
 content = """
 
-# Documentation
+# 文档
 
-### Quick Overview
+### 概述
 
-  * **[Get Started](/get-started)**
-  * [Examples](/examples)
-  * [The Elm Architecture](http://guide.elm-lang.org/architecture/)
-  * [Let's be Mainstream!](http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design)
+  * **[开始安装](/get-started)**
+  * [例子](/examples)
+  * [Elm的架构](http://guide.elm-lang.org/architecture/)
+  * [成为主流！](http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design)
 
 
-### Learn Elm
+### 学习
 
-  * **[An Introduction to Elm](http://guide.elm-lang.org)**
+  * **[学习指南](http://guide.elm-lang.org)**
   * [FAQ](http://elm-community.github.io/elm-faq/)
-  * [Syntax](/docs/syntax)
-  * [Syntax vs JS](/docs/from-javascript)
+  * [语法参考](/docs/syntax)
+  * [和JS的语法比较](/docs/from-javascript)
   * [Style Guide](/docs/style-guide)
-  * [Package Design](http://package.elm-lang.org/help/design-guidelines)
-  * [Writing Documentation](http://package.elm-lang.org/help/documentation-format)
-  * [Advanced Topics](/docs/advanced-topics)
+  * [包的组织](http://package.elm-lang.org/help/design-guidelines)
+  * [Doc的格式](http://package.elm-lang.org/help/documentation-format)
+  * [异步、响应，记录集](/docs/advanced-topics)
 
 
-### Packages
+### 库
 
   * **[All Community Packages](http://package.elm-lang.org)**
   * [Core](http://package.elm-lang.org/packages/elm-lang/core/latest/)

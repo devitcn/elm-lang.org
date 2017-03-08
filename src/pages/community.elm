@@ -12,9 +12,9 @@ main =
 
 community = """
 
-# Community
+# 社区
 
-  * [Community Packages](http://package.elm-lang.org/)
+  * [公共库](http://package.elm-lang.org/)
   * [Reddit][reddit]
   * [Slack][slack]
   * [Twitter][twitter]
@@ -91,7 +91,7 @@ and [elm-dev](https://groups.google.com/d/msg/elm-dev/oZ3xW_nMPNo/0y8j-N8HCQAJ).
 There are some people (and their expertise) only available through email!
 
 
-## Contribute
+## 做贡献
 
 I recommend watching [this talk](https://youtu.be/DSjbTC-hvqQ), which has a
 big focus on growing Elm and collaborating.

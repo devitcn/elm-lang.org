@@ -30,7 +30,7 @@ splash =
   div [ class "splash" ]
     [ div [ size 120 16 ] [ text "elm" ]
     , div [ size 26 8 ] [ text "A delightful language for reliable webapps." ]
-    , div [ size 16 8 ] [ text "Generate JavaScript with great performance and no runtime exceptions." ]
+    , div [ size 16 8 ] [ text "生成性能优秀，没有runtime exceptions的JavaScript。" ]
     , br [] []
     , getStarted
     ]
@@ -50,8 +50,8 @@ size height padding =
 getStarted : Html msg
 getStarted =
   div [ class "get-started" ]
-    [ a [ href "/try" ] [ text "Try Online" ]
-    , a [ href "http://guide.elm-lang.org/install.html" ] [ text "Install" ]
+    [ a [ href "/try" ] [ text "体验" ]
+    , a [ href "http://guide.elm-lang.org/install.html" ] [ text "安装" ]
     ]
 
 
@@ -67,7 +67,7 @@ getStartedSection =
 featureSection : Html msg
 featureSection =
   section [class "home-section"]
-    [ h1 [] [text "Features"]
+    [ h1 [] [text "特点"]
     , ul [class "features"] (List.map viewFeature features)
     ]
 
@@ -104,7 +104,7 @@ viewFeature feature =
 features : List (Feature msg)
 features =
   [ Feature "JavaScript Interop" 100 "/assets/home/embed.png" "/blog/how-to-use-elm-at-work" <|
-      [ text "Elm compiles to JavaScript, so trying out Elm is easy. Convert a small part of your app to Elm and "
+      [ text "Elm 会编译成 JavaScript，so trying out Elm is easy. Convert a small part of your app to Elm and "
       , a [href "/blog/how-to-use-elm-at-work"] [text "embed it in JS"]
       , text ". No full rewrites, no huge time investment. More about that "
       , a [href "http://guide.elm-lang.org/interop/"] [text "here"]
@@ -115,13 +115,13 @@ features =
       , a [href "/blog/compilers-as-assistants"] [text "friendly hints"]
       , text ". This way problems never make it to your users. NoRedInk has 80k+ lines of Elm, and after more than a year in production, it still has not produced a single runtime exception."
       ]
-  , Feature "Great Performance" 320 "/assets/home/benchmark.png" "/blog/blazing-fast-html-round-two" <|
-      [ text "Elm has its own virtual DOM implementation, designed for simplicity and speed. All values are immutable in Elm, and "
+  , Feature "优秀的性能" 320 "/assets/home/benchmark.png" "/blog/blazing-fast-html-round-two" <|
+      [ text "Elm 有自己的虚DOM实现， designed for simplicity and speed. All values are immutable in Elm, and "
       , a [href "/blog/blazing-fast-html-round-two"] [text "the benchmarks"]
       , text " show that this helps us generate particularly fast JavaScript code."
       ]
   , Feature "Enforced Semantic Versioning" 280 "/assets/home/semver.png" "http://package.elm-lang.org" <|
-      [ text "Elm can detect all API changes automatically thanks to its type system. We use that information to force everything in "
+      [ text "Elm 可以自动侦测所有的API变更，这得益于他的类型系统。 We use that information to force everything in "
       , a [href "http://package.elm-lang.org"] [text "our package catalog"]
       , text " to follow "
       , a [href "https://github.com/elm-lang/elm-package/#version-rules"] [text "semantic versioning"]
@@ -137,7 +137,7 @@ features =
 exampleSection : Html msg
 exampleSection =
   section [class "home-section"]
-    [ h1 [] [text "Examples"]
+    [ h1 [] [text "例子"]
     , p [class "home-paragraph", style [("margin-bottom","40px")] ]
         [ text "Learning by example is important, so we have some "
         , a [href "/examples"] [text "simple"]
@@ -229,7 +229,7 @@ fluidList itemWidth maxColumns itemList =
 userSection : Html msg
 userSection =
   section [class "home-section"]
-    [ h1 [] [text "Featured Users"]
+    [ h1 [] [text "用户"]
     , div [ class "featured-user" ]
         [ div [ class "quote" ]
             [ p [] [ text "We’ve had zero run-time failures, the filesize is ridiculously small, and it runs faster than anything else in our code base. We’ve also had fewer bugs... " ]

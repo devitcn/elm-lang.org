@@ -27,16 +27,16 @@ header name =
         ]
         [ img [ src "/assets/logo.svg", style [ "width" => "24px" ] ] []
         ]
-    , ul [] (List.map (tab name) [ "examples", "docs", "community", "blog" ])
+    , ul [] (List.map (tab name) [ ("examples","例子"), ("docs","文档"), ("community","社区"), ("blog","博客") ])
     ]
 
 
-tab currentName name =
+tab currentName (name , title) =
   li []
     [ a [ classList [ "tab" => True, "current" => (currentName == name) ]
         , href ("/" ++ name)
         ]
-        [ text name ]
+        [ text title ]
     ]
 
 
@@ -46,8 +46,10 @@ tab currentName name =
 
 footer =
   div [class "footer"]
-    [ text "All code for this site is open source and written in Elm. "
-    , a [ class "grey-link", href "https://github.com/elm-lang/elm-lang.org/" ] [ text "Check it out" ]
-    , text "! — © 2012-2017 Evan Czaplicki"
+    [ text "网站源码也是用Elm写的，并且"
+    , a [ class "grey-link", href "https://github.com/elm-lang/elm-lang.org/" ] [ text "开源" ]
+    , text "。简体中文由 Alex Lei "
+    , a [ class "grey-link", href "https://github.com/devitcn/elm-lang.org" ] [ text "翻译" ]
+    , text "。 — © 2012-2017 版权所有 Evan Czaplicki"
     ]
 
